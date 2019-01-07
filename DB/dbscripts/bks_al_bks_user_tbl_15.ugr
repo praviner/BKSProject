@@ -1,0 +1,17 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_al_bks_user_tbl_15.ugr  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_al_bks_user_tbl_15.ugr-arc   1.0   Jun 30 2011 14:00:34   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-24000 
+--
+--
+--#########################################################################*/
+
+grant select on MAIN_USER.SERVICE_CHARACTERISTIC to BKS_USER;

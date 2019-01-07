@@ -1,0 +1,30 @@
+/*
+-- #########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_somed_accnum_detail_Lookup_tbl.con  $
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_somed_accnum_detail_Lookup_tbl.con-arc   1.2   May 07 2014 13:45:28   makuier  $
+-- Revision     :  $Revision:   1.2  $
+--
+--  -------------------------------------------------------------------------
+--
+-- Description:  User-grants for SOMED_ACCNUM_LOOKUP_DETAIL 
+--
+-- History      :  $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_somed_accnum_detail_Lookup_tbl.con-arc  $
+--
+--   Rev 1.2   May 07 2014 13:45:28   makuier
+--Corrected the name of table space.
+--
+--   Rev 1.1   Apr 25 2014 12:30:34   makuier
+--index space added.
+--
+--   Rev 1.0   23 Jan 2013 13:43:36   heikampm
+--Initial revision.
+--
+--
+--
+-- ########################################################################## */
+
+@ConfigEnvSpecifics.sql
+
+alter table SOMED_ACCNUM_LOOKUP_DETAIL 
+  add constraint ACCNUMLOOKUP_DET_PK primary key (REQUEST_ID, ACCESS_NUMBER) USING INDEX &&EFFONL_CCM_MEDIUM_IDX;

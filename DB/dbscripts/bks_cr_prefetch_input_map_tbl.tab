@@ -1,0 +1,26 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_usr_bks_user_effonl.ugr  $ 
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_usr_bks_user_effonl.ugr-arc   1.1   05 Sep 2007 12:20:34   dortmann  $ 
+-- Revision     :  $Revision:   1.1  $
+-- 
+-- -----------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+@ConfigEnvSpecifics.sql
+create table PREFETCH_INPUT_MAP (
+   SOURCE_SERVICE_NAME         varchar2(50)  not null,
+   TARGET_SERVICE_NAME         varchar2(50)  not null,
+   TARGET_PACKAGE              varchar2(80)  not null,
+   SOURCE_DATA_TAG             varchar2(30)  not null,
+   SOURCE_OBJECT               varchar2(30)  not null,
+   TARGET_DATA_TAG             varchar2(30)  not null
+)
+ &&ONL_CCM_SMALL_TAB;
+ 

@@ -1,0 +1,28 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_ccb_som_mapping_tbl.con  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_ccb_som_mapping_tbl.con-arc   1.1   Oct 28 2009 18:04:12   makuier  $ 
+-- Revision		:  $Revision:   1.1  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Reference data for BKS customer data mapping
+--
+--
+--#########################################################################*/
+
+ALTER TABLE CCB_SOM_MAPPING
+ADD CONSTRAINT CCB_SOM_MAPPING_PK PRIMARY KEY (
+   TABLE_NAME,
+   TARGET_OBJECT,
+   COLUMN_NAME,
+   TARGET_ATTRIBUTE_PATH,
+   VALID_FROM,
+   VALID_UNTIL
+  )
+  USING INDEX
+  &&ONL_CCM_SMALL_IDX;

@@ -1,0 +1,18 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_static_configuration_tbl.ugr  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_static_configuration_tbl.ugr-arc   1.0   Dec 04 2007 16:22:16   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Reference data for BKS customer data mapping
+--
+--
+--#########################################################################*/
+
+grant select on BKS_STATIC_CONFIGURATION to R_BKS_RO;

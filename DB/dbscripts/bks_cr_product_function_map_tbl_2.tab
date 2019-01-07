@@ -1,0 +1,19 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_product_function_map_tbl_2.tab  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_product_function_map_tbl_2.tab-arc   1.0   Jun 28 2013 10:11:50   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Reference data for BKS customer data mapping
+--
+--
+--#########################################################################*/
+
+ALTER TABLE PRODUCT_FUNCTION_MAP ADD (PHONE_SYSTEM_TYPE VARCHAR2(6) NULL); 
+ 

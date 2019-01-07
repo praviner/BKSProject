@@ -1,0 +1,26 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_static_configuration_tbl.tab  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_static_configuration_tbl.tab-arc   1.1   Nov 28 2007 09:59:24   huptasch  $ 
+-- Revision		:  $Revision:   1.1  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Reference data for BKS customer data mapping
+--
+--
+--#########################################################################*/
+
+@ConfigEnvSpecifics.sql
+create table BKS_STATIC_CONFIGURATION (
+   VALUE_ID                 varchar2(60) not null,
+   TARGET_ATTRIBUTE_PATH    varchar2(360) not null,
+   VALID_FROM               date,
+   VALID_UNTIL              date
+)
+ &&ONL_CCM_SMALL_TAB;
+ 

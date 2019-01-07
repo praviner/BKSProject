@@ -1,0 +1,17 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_transaction_log_tbl.syn  $ 
+-- Header               :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_transaction_log_tbl.syn-arc   1.0   Feb 15 2008 15:17:44   makuier  $ 
+-- Revision             :  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+create public synonym BKS_TRANSACTION_LOG for BKS_TRANSACTION_LOG;
+

@@ -1,0 +1,21 @@
+/*
+--#########################################################################
+--
+-- Script Name          :  $Workfile:   ccm_cr_ccm_get_end_date_of_fnc.fnc  $ 
+-- Header               :  $Header:   /opt/pvcs/archives/ccb/dbscripts/ccm_cr_ccm_get_end_date_of_fnc.fnv   1.0   03 May 2007 19:23:50   shamesv  $ 
+-- Revision             :  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+--
+-- ONL
+-- BKS_DB
+--
+-- Modification History :  $Log: $
+--
+--
+--#########################################################################*/
+CREATE OR REPLACE PUBLIC SYNONYM CCM_GET_END_DATE_OF FOR CCM_GET_END_DATE_OF;

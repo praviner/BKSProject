@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+* START HEADER
+* File:                    server.xml.template
+* Author:                  Insono, SWA
+* Version:                 1.0 (perforce)
+* Purpose:                 Template for server.xml of Tomcat
+* Operating System:        UNIX
+* Last Change:             30.08.2007
+* Change history:          <date> <reason>  e.g. 30.08.2007 Erstuebergabe
+* END HEADER 
+-->
+<!--
+#START PARAMETER
+#Parameter       : bks.tomcat.port.shutdown
+#ValidFrom       : BKS-125.00.00.00
+#ValidTo         : open
+#ParameterType   : Integer
+#ValidValues     : 0000 - 9999
+#DefaultValue    : -
+#ExampleValue    : 8005
+#RecommendedVal. : -
+#Optional        : N
+#Last_Modified   : 25.08.07
+#Last_Modified_By: Insono, SWA
+#Description     : legt den Port fest, ueber den Tomcat heruntergefahren
+werden kann
+#END PARAMETER
+-->
+<Server port="${bks.tomcat.port.shutdown}"
+      shutdown="SHUTDOWN">
+
+      <!-- Global JNDI resources
+       Documentation at /docs/jndi-resources-howto.html
+       -->
+      <GlobalNamingResources>
+      <!-- Editable user database that can also be used by
+         UserDatabaseRealm to authenticate users
+      -->
+      <Resource name="UserDatabase" auth="Container"
+              type="org.apache.catalina.UserDatabase"
+              description="User database that can be updated and saved"
+              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+              pathname="conf/tomcat-users.xml" />
+      </GlobalNamingResources>
+
+      <Service name="Tomcat-Standalone">
+            <!--
+            #START PARAMETER
+            #Parameter       : bks.tomcat.port.http
+            #ValidFrom       : BKS-125.00.00.00
+            #ValidTo         : open
+            #ParameterType   : Integer
+            #ValidValues     : 0000 - 9999
+            #DefaultValue    : -
+            #ExampleValue    : 8080
+            #RecommendedVal. : -
+            #Optional        : N
+            #Last_Modified   : 25.08.07
+            #Last_Modified_By: Insono, SWA
+            #Description     : legt den HTTP Port fest, ueber den der Tomcat mittels HTTP erreicht werden kann
+            #END PARAMETER
+            -->
+
+            <!--
+            #START PARAMETER
+            #Parameter       : bks.appserv.host
+            #ValidFrom       : BKS-127.00.00.00
+            #ValidTo         : open
+            #ParameterType   : String
+            #ValidValues     : a valid host name
+            #DefaultValue    : -
+            #ExampleValue    : pkg...
+            #RecommendedVal. : -
+            #Optional        : N
+            #Last_Modified   : 09.05.08
+            #Last_Modified_By: makuier
+            #Description     : the name of the host.
+            #END PARAMETER
+            -->
+
+            <!--
+            #START PARAMETER
+            #Parameter       : bks.appserv.maxthreads
+            #ValidFrom       : BKS-152.00.00.00
+            #ValidTo         : open
+            #ParameterType   : String
+            #ValidValues     : a positive integer. 
+            #DefaultValue    : 200
+            #ExampleValue    : 50
+            #RecommendedVal. : -
+            #Optional        : N
+            #Last_Modified   : 09.05.15
+            #Last_Modified_By: makuier
+            #Description     : Max. number of Http parallel threads
+            #END PARAMETER
+            -->
+
+            <!--
+            #START PARAMETER
+            #Parameter       : bks.tomcat.connectionTimeout
+            #ValidFrom       : BKS-125.00.00.00
+        		#ValidTo         : open
+            #ParameterType   : Integer
+            #ValidValues     : -1 oder 0 - ...
+            #DefaultValue    : -
+            #ExampleValue    : 60000
+            #RecommendedVal. : -
+            #Optional        : N
+            #Last_Modified   : 25.08.07
+            #Last_Modified_By: Insono, SWA
+            #Description     : legt den Timeout fest, ab dem eine Anfrage nicht erfolgreich abgebrochen
+            #Description     : wird. -1 bedeutet kein Timeout.
+            #END PARAMETER
+            -->
+            <!-- Define a non-SSL HTTP/1.1 Connector -->
+            <Connector port="${bks.tomcat.port.http}"
+                     address="${bks.appserv.host}"
+                     maxthreads="${bks.appserv.maxthreads}"
+                     minProcessors="5"
+                     maxProcessors="75"
+                     enableLookups="true"
+                     acceptCount="10"
+                     connectionTimeout="${bks.tomcat.connectionTimeout}" />
+
+            <!-- Define the top level container in our container hierarchy-->
+            <Engine name="Standalone" defaultHost="${bks.appserv.host}">
+
+                  <Realm className="org.apache.catalina.realm.UserDatabaseRealm" resourceName="UserDatabase"/>
+                  <!-- Define the default virtual host -->
+                  <Host name="${bks.appserv.host}" 
+                  	appBase="webapps" 
+                  	unpackWARs="false" 
+                  	autoDeploy="false">
+                        <Valve className="org.apache.catalina.valves.AccessLogValve" 
+                        	directory="logs" 
+                        	prefix="localhost_access_log." 
+                        	suffix=".txt" 
+                        	pattern="common" />
+						 <Context path="/manager" docBase="manager" debug="0" privileged="true">
+								<Realm className="org.apache.catalina.realm.MemoryRealm" pathname="conf/tomcat-users.xml" />
+								<Valve className="org.apache.catalina.valves.RemoteAddrValve" allow="${bks.appserv.manager.allow}"/>
+						</Context>
+                 </Host>
+                  
+            </Engine>
+      </Service>
+</Server>

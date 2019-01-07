@@ -1,0 +1,17 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_product_function_map_tbl.ugr  $ 
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_product_function_map_tbl.ugr-arc   1.0   Dec 18 2009 16:12:24   makuier  $ 
+-- Revision     :  $Revision:   1.0  $
+-- 
+-- -----------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+grant select on PRODUCT_FUNCTION_MAP to R_BKS_RO;
+

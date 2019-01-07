@@ -1,0 +1,25 @@
+/*
+-- #########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_somed_accnum_Lookup_tbl_1.ugr  $
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_somed_accnum_Lookup_tbl_1.ugr-arc   1.0   Apr 25 2014 12:21:00   makuier  $
+-- Revision     :  $Revision:   1.0  $
+--
+--  -------------------------------------------------------------------------
+--
+-- Description:  User-grants for SOMED_ACCNUM_LOOKUP 
+--
+-- History      :  $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_somed_accnum_Lookup_tbl_1.ugr-arc  $
+--
+--   Rev 1.0   Apr 25 2014 12:21:00   makuier
+--Initial revision.
+--
+--   Rev 1.0   13 Mar 2014 13:06:30   makuier
+--Initial revision.
+--
+--
+--
+-- ########################################################################## */
+
+GRANT SELECT,INSERT,UPDATE,DELETE on SOMED_ACCNUM_LOOKUP TO BKS_USER;
+

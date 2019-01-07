@@ -1,0 +1,194 @@
+CREATE OR REPLACE PACKAGE ZAR_ACCNUM_INFO AS
+
+  c_system       CONSTANT VARCHAR2 (50) := 'ZAR';
+
+  PROCEDURE CCM_GET_ZAR_ACCNUM_INFO (
+      i_customer_number                 IN       VARCHAR2,
+      i_ONKZ                            IN       VARCHAR2,
+      i_access_number                 IN       VARCHAR2,
+	  o_ONKZ                  OUT      VARCHAR2,
+     o_access_number_start     OUT      VARCHAR2,
+	  o_access_number_end       OUT      VARCHAR2,
+      o_product_code          OUT      VARCHAR2,
+	  o_physical_status       OUT      integer,
+      o_logical_status        OUT      integer,
+          o_tnb                   OUT      VARCHAR2,
+      o_future_tnb            OUT      VARCHAR2,
+	  o_desired_date          OUT      VARCHAR2,
+      o_customer_number       OUT      VARCHAR2,
+	  o_access_id             OUT      VARCHAR2,
+      o_error_code            OUT      integer,
+	  o_error_text            OUT      VARCHAR2,
+      o_paired_status_indicator OUT      VARCHAR2,
+	  o_pending_correction_indicator  OUT      VARCHAR2);
+  END ZAR_ACCNUM_INFO;
+/
+CREATE OR REPLACE PACKAGE BODY ZAR_ACCNUM_INFO AS
+
+  gc_status_started  CONSTANT    somed_accnum_lookup_detail.request_id%TYPE   := 'x';
+  gc_error_01            NUMBER (10)                     := -20800;
+     gc_error_02            NUMBER (10)                     := -20801;
+     gc_error_03            NUMBER (10)                     := 2081;
+	gc_error_text_02       VARCHAR2 (200)                  := 'Error';
+  
+  PROCEDURE CCM_GET_ZAR_ACCNUM_INFO (
+	i_customer_number                 IN       VARCHAR2,
+    i_ONKZ                            IN       VARCHAR2,
+	i_access_number                 IN       VARCHAR2,
+    o_ONKZ                  OUT      VARCHAR2,
+	o_access_number_start     OUT      VARCHAR2,
+    o_access_number_end       OUT      VARCHAR2,
+	o_product_code          OUT      VARCHAR2,
+    o_physical_status       OUT      integer,
+        o_logical_status        OUT      integer,
+    o_tnb                   OUT      VARCHAR2,
+	o_future_tnb            OUT      VARCHAR2,
+    o_desired_date          OUT      VARCHAR2,
+	o_customer_number       OUT      VARCHAR2,
+    o_access_id             OUT      VARCHAR2,
+	o_error_code            OUT      integer,
+    o_error_text            OUT      VARCHAR2,
+	o_paired_status_indicator OUT      VARCHAR2,
+    o_pending_correction_indicator  OUT      VARCHAR2)
+  IS
+
+ RetVal pls_integer;
+     vnreqid TAB_CN_RETRIEVE.COL_REQUEST_ID%type;
+	 vtreqdata pkg_fe.T_TABLEREQUESTCNDATA;
+	   vtReqResult pkg_fe.T_RETRIEVE_TABLE;
+
+ count_access_number integer;
+ p_status VARCHAR2 (16);
+ p_access_number_start VARCHAR2 (360);
+ p_access_number_end VARCHAR2 (360);
+ p_product_code VARCHAR2(5);
+ p_pending_correction_indicator VARCHAR2(1);
+ p_paired_status_indicator VARCHAR2 (1);
+ 
+ 
+  BEGIN
+
+      vtreqdata(1).Customer_number  :=i_customer_number;
+	 vtreqdata(1).ONKZ             :=i_ONKZ;
+	    vtreqdata(1).Call_number_start:=i_access_number;
+	       vtreqdata(1).Call_number_end  :=i_access_number;
+
+      RetVal := pkg_fe.req_cn_customer_info(vtreqdata => vtreqdata,
+					vscallingsystem => 'CCM',
+						vnreqid => vnreqid);
+      if RetVal=0
+      then
+          RetVal := pkg_fe.retr_cn_customer_info( vnReqId => vnreqid, vtReqResult => vtReqResult);
+      end if;
+
+    o_error_code:=-2;
+	  p_status:='ERROR';
+	o_error_text:='Keine Verbindung mit der ZAR-Datenbank !';
+
+ if vtreqresult.count > 0
+ then
+
+   o_ONKZ:=vtreqresult(1).COL_ONB_VORWAHL;
+   o_access_number_start:=vtreqresult(1).COL_NUMBER_START;
+   o_access_number_end:=vtreqresult(1).COL_NUMBER_END;
+   o_product_code:=vtreqresult(1).COL_PRODUCT;
+   o_physical_status:=vtreqresult(1).COL_RUF_PHYSICAL_STATUS;
+   o_logical_status:=vtreqresult(1).COL_RUF_LOGICAL_STATUS;
+     o_tnb:=vtreqresult(1).COL_CURRENT_RUF_HOLDER;
+   o_future_tnb:=vtreqresult(1).COL_SUBMITTER_TNB;
+   o_desired_date:=to_char(vtreqresult(1).COL_REQUEST_DATE,'DD.MM.YY');
+    o_customer_number:=vtreqresult(1).COL_RUF_KUNDENNUMMER;
+   o_access_id:=vtreqresult(1).COL_ACCESS_ID;
+      o_error_code:=vtreqresult(1).COL_ERROR_CODE;
+   o_error_text:=vtreqresult(1).COL_ERROR_DESC;
+	o_paired_status_indicator:=vtreqresult(1).COL_PAIR_STATUS;
+     o_pending_correction_indicator:=vtreqresult(1).COL_PENDING_CORRECTION;
+   
+   p_access_number_start:=concat('49;',ltrim(o_ONKZ,'0'));
+   p_access_number_start:=concat(p_access_number_start,';');
+   p_access_number_end:=p_access_number_start;
+   p_access_number_start:=concat(p_access_number_start,o_access_number_start);
+   p_access_number_end:=concat(p_access_number_end,o_access_number_end);
+   
+   if o_error_code = 0
+   then
+     p_status:='SUCCESS';
+   end if;
+   
+   if o_access_number_start=o_access_number_end
+   then 
+     p_access_number_end:='';
+   end if;
+   
+   if length(o_product_code) < 6
+   then
+     p_product_code:=o_product_code;
+   else
+     p_product_code:='';
+   end if;
+   
+   if o_pending_correction_indicator='NO'
+   then
+     p_pending_correction_indicator:='N';
+   else
+     p_pending_correction_indicator:='Y';
+   end if;
+   
+   if o_paired_status_indicator='PAIRED' 
+   then
+     p_paired_status_indicator:='Y';
+   else
+     p_paired_status_indicator:='N';
+   end if;
+   
+   select count(*) into count_access_number from somed_accnum_lookup  where access_number=p_access_number_start;
+     
+   if count_access_number > 0
+   then
+     delete from somed_accnum_lookup_detail d where d.request_id = (select t.request_id from somed_accnum_lookup t where t.access_number=p_access_number_start);
+
+     update somed_accnum_lookup set
+        request_id=vtreqresult(1).COL_REQUEST_ID,
+        request_date_time=vtreqresult(1).COL_REQUEST_DATE,
+        customer_number=vtreqresult(1).COL_RUF_KUNDENNUMMER,
+        line_id=vtreqresult(1).COL_ACCESS_ID,
+        access_number_range_end=p_access_number_end,
+        result=p_status,
+        error_code=vtreqresult(1).COL_ERROR_CODE,
+        audit_update_user_id='ccm_user',
+        audit_update_date_time=sysdate,
+        update_number=1
+      where access_number=p_access_number_start;
+    else
+      insert into somed_accnum_lookup (request_id,request_date_time,source_system,customer_number,
+      line_id,access_number,access_number_range_end,result,error_code,audit_update_user_id,
+      audit_update_date_time,update_number)
+      values (vtreqresult(1).COL_REQUEST_ID,vtreqresult(1).COL_REQUEST_DATE,'ZAR',
+              vtreqresult(1).COL_RUF_KUNDENNUMMER,vtreqresult(1).COL_ACCESS_ID,
+              p_access_number_start,p_access_number_end,p_status,
+              vtreqresult(1).COL_ERROR_CODE,'ccm_user',sysdate,1);
+    end if;
+    
+    insert into somed_accnum_lookup_detail (request_id,access_number,access_number_range_end,
+    source_system,customer_number,line_id,product_code,physical_number_status,logical_number_status,
+    current_tnb,future_tnb,porting_date,pending_correction_indicator,paired_status_indicator,error_code,
+    audit_update_user_id,audit_update_date_time,update_number)
+    values (vtreqresult(1).COL_REQUEST_ID,p_access_number_start,p_access_number_end,'ZAR',
+            vtreqresult(1).COL_RUF_KUNDENNUMMER,vtreqresult(1).COL_ACCESS_ID,p_product_code,
+            vtreqresult(1).COL_RUF_PHYSICAL_STATUS,vtreqresult(1).COL_RUF_LOGICAL_STATUS,
+            vtreqresult(1).COL_CURRENT_RUF_HOLDER,vtreqresult(1).COL_SUBMITTER_TNB,
+            vtreqresult(1).COL_REQUEST_DATE,p_pending_correction_indicator,p_paired_status_indicator,
+            vtreqresult(1).COL_ERROR_CODE,'ccm_user',sysdate,1);
+    
+ end if;
+
+     EXCEPTION
+	 WHEN OTHERS THEN
+
+	     o_error_code:=-2;
+             o_error_text:='Fehler beim ZAR-Datenbankzugriff';
+
+ END  CCM_GET_ZAR_ACCNUM_INFO;
+
+END ZAR_ACCNUM_INFO;
+/

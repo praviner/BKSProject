@@ -1,0 +1,17 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_al_bks_user_tbl_12.ugr  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_al_bks_user_tbl_12.ugr-arc   1.0   Nov 03 2010 15:51:10   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-24000 
+--
+--
+--#########################################################################*/
+
+grant select on MAIN_USER.PROVIDER_CHANGE_LOG to BKS_USER;

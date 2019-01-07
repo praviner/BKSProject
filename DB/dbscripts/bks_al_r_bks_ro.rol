@@ -1,0 +1,20 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   upd_crd_cross_reference_group_14.sql  $ 
+-- Header		:  $Header:   /opt/pvcs/archives/ccb/db_data/upd_crd_cross_reference_group_14.sqv   1.0   31 Oct 2006 13:46:50   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Role for BKS users
+--
+--
+--#########################################################################*/
+
+grant select on BKS_OWNER.BKS_REFDATA_MAPPING to R_BKS_RO;
+grant select on BKS_OWNER.BKS_REFDATA_VALUES to R_BKS_RO;
+grant select on BKS_OWNER.BKS_STATIC_CONFIGURATION to R_BKS_RO;

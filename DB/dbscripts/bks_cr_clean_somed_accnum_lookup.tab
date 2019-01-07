@@ -1,0 +1,24 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_clean_somed_accnum_lookup.tab  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_clean_somed_accnum_lookup.tab-arc   1.0   Apr 25 2014 14:53:08   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP TABLE SOMED_ACCNUM_LOOKUP';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -942 THEN
+         RAISE;
+      END IF;
+END;
+/

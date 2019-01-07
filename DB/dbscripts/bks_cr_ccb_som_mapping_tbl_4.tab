@@ -1,0 +1,19 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_ccb_som_mapping_tbl_4.tab  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_ccb_som_mapping_tbl_4.tab-arc   1.0   May 17 2010 16:58:38   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-24075 "Umstellung WOE auf AAW-Architektur"
+-- Reference data for BKS service subscription data mapping
+--
+--
+--#########################################################################*/
+
+ALTER TABLE CCB_SOM_MAPPING DROP COLUMN SID_PACKAGE_NAME;
+

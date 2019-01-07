@@ -1,0 +1,20 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_ccb_som_mapping_tbl.syn  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_ccb_som_mapping_tbl.syn-arc   1.0   Oct 28 2009 17:58:04   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Reference data for BKS customer data mapping
+--
+--
+--#########################################################################*/
+
+create public synonym CCB_SOM_MAPPING for CCB_SOM_MAPPING;
+
+ 

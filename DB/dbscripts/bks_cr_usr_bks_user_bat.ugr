@@ -1,0 +1,25 @@
+/******************************************************************************
+* HEADER       : $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_usr_bks_user_bat.ugr-arc   1.1   Apr 26 2017 12:02:32   makuier  $
+* REVISION     : $Revision:   1.1  $
+* MODULENAME   : $Workfile:   bks_cr_usr_bks_user_bat.ugr  $
+* AUTHOR       : Suma Bangi
+*
+* DESCRIPTION  : Create User BKS_USER on BAT.
+*
+* HISTORY      : $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_usr_bks_user_bat.ugr-arc  $
+--
+--   Rev 1.1   Apr 26 2017 12:02:32   makuier
+--removed the ANY grants
+--
+--   Rev 1.0   Mar 22 2017 11:49:34   makuier
+--Initial revision.
+
+*********************************************************************************/
+CREATE USER BKS_USER IDENTIFIED BY &&USER_PASSWORD;
+GRANT CREATE SESSION TO BKS_USER;
+GRANT ALTER SESSION TO BKS_USER;
+GRANT CREATE PROCEDURE TO BKS_USER;
+GRANT CREATE TABLE TO BKS_USER;
+GRANT CREATE SYNONYM TO BKS_USER;
+GRANT CREATE SEQUENCE TO BKS_USER;
+GRANT CREATE DATABASE LINK TO BKS_USER;

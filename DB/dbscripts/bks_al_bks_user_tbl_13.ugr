@@ -1,0 +1,17 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_al_bks_user_tbl_13.ugr  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_al_bks_user_tbl_13.ugr-arc   1.0   Mar 08 2011 16:11:24   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-24000 
+--
+--
+--#########################################################################*/
+
+grant select on MAIN_USER.CONTACT_ROLE_ENTITY to BKS_USER;

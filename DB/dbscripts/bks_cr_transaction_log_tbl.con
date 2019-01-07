@@ -1,0 +1,20 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_transaction_log_tbl.con  $ 
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_transaction_log_tbl.con-arc   1.1   Mar 12 2008 14:42:08   huptasch  $ 
+-- Revision     :  $Revision:   1.1  $
+-- 
+-- -----------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+ALTER TABLE BKS_TRANSACTION_LOG
+  ADD CONSTRAINT TRANSACTION_LOG_PK PRIMARY KEY (
+CORRELATION_ID,
+SERVICE_NAME
+  );

@@ -1,0 +1,18 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_al_bks_user_tbl_7.ugr  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_al_bks_user_tbl_7.ugr-arc   1.0   Aug 31 2009 11:02:08   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+--
+--
+--#########################################################################*/
+
+grant select on MAIN_USER.SALES_PACKET to BKS_USER;
+grant select on MAIN_USER.BUNDLE_PACKET to BKS_USER;

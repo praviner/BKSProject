@@ -1,0 +1,82 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_r_bks_ro.ugr  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_r_bks_ro.ugr-arc   1.0   Dec 14 2007 11:37:06   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Role for BKS users
+--
+-- History      :  $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_r_bks_ro.ugr-arc  $
+--
+--   Rev 1.0   Dec 14 2007 11:37:06   huptasch
+--Initial revision.
+--
+--
+--#########################################################################*/
+
+grant select on MAIN_USER.ACCESS_INFORMATION to R_BKS_RO;
+grant select on MAIN_USER.ACCESS_NUMBER to R_BKS_RO;
+grant select on MAIN_USER.ACCOUNT to R_BKS_RO;
+grant select on MAIN_USER.ADDRESS to R_BKS_RO;
+grant select on MAIN_USER.AFFINITY_GROUP to R_BKS_RO;
+grant select on MAIN_USER.ARCOR_CONTACT_DATA to R_BKS_RO;
+grant select on MAIN_USER.ARCOR_CONTACT_RULE to R_BKS_RO;
+grant select on MAIN_USER.BANK_ACCOUNT to R_BKS_RO;
+grant select on MAIN_USER.BUNDLE to R_BKS_RO;
+grant select on MAIN_USER.BUNDLE_ITEM to R_BKS_RO;
+grant select on MAIN_USER.BUNDLE_MIGRATION_LOG to R_BKS_RO;
+grant select on MAIN_USER.COMMISSIONING_INFORMATION to R_BKS_RO;
+grant select on MAIN_USER.CONFIGURED_VALUE to R_BKS_RO;
+grant select on MAIN_USER.CONFIG_SERVICE_CHARACTERISTIC to R_BKS_RO;
+grant select on MAIN_USER.CONTACT to R_BKS_RO;
+grant select on MAIN_USER.CONTACT_ROLE to R_BKS_RO;
+grant select on MAIN_USER.CONTRACT_CUSTOMER to R_BKS_RO;
+grant select on MAIN_USER.CONTRACT_PREDEFINED_LEGAL to R_BKS_RO;
+grant select on MAIN_USER.CONTRIBUTING_ITEM to R_BKS_RO;
+grant select on MAIN_USER.CREDIT_CARD to R_BKS_RO;
+grant select on MAIN_USER.CROSS_REFERENCE_ITEM to R_BKS_RO;
+grant select on MAIN_USER.CSECOMMENT to R_BKS_RO;
+grant select on MAIN_USER.CUSTOMER to R_BKS_RO;
+grant select on MAIN_USER.CUSTOMER_DECRYPT to R_BKS_RO;
+grant select on MAIN_USER.CUSTOMER_ORDER to R_BKS_RO;
+grant select on MAIN_USER.CUSTOMER_ORDER_DEPENDENCY to R_BKS_RO;
+grant select on MAIN_USER.CUSTOM_LEGAL_CONDITION to R_BKS_RO;
+grant select on MAIN_USER.DOCUMENT_PATTERN to R_BKS_RO;
+grant select on MAIN_USER.DOCUMENT_RECIPIENT to R_BKS_RO;
+grant select on MAIN_USER.ENTITY to R_BKS_RO;
+grant select on MAIN_USER.GENERAL_CODE_ITEM to R_BKS_RO;
+grant select on MAIN_USER.GUIDING_RULE to R_BKS_RO;
+grant select on MAIN_USER.MAILING to R_BKS_RO;
+grant select on MAIN_USER.ORDER_FORM to R_BKS_RO;
+grant select on MAIN_USER.ORDER_FORM_PRODUCT_COMMIT to R_BKS_RO;
+grant select on MAIN_USER.PARAMETER_ITEM to R_BKS_RO;
+grant select on MAIN_USER.PASSWORD to R_BKS_RO;
+grant select on MAIN_USER.PREDEFINED_LEGAL_CONDITION to R_BKS_RO;
+grant select on MAIN_USER.PRICE_PLAN_SUBSCRIPTION to R_BKS_RO;
+grant select on MAIN_USER.PRINCIPAL to R_BKS_RO;
+grant select on MAIN_USER.PRINCIPAL_ASSOCIATE to R_BKS_RO;
+grant select on MAIN_USER.PRODUCT_SERVICE_RULE to R_BKS_RO;
+grant select on MAIN_USER.PRODUCT_SUBSCRIPTION to R_BKS_RO;
+grant select on MAIN_USER.PRODUCT_SUBSCRIPTION_GROUP to R_BKS_RO;
+grant select on MAIN_USER.SAP_DUNNING to R_BKS_RO;
+grant select on MAIN_USER.SAP_DUNNING_PROCESSING to R_BKS_RO;
+grant select on MAIN_USER.SAP_DUNNING_STATISTIC to R_BKS_RO;
+grant select on MAIN_USER.SECURITY_PROFILE to R_BKS_RO;
+grant select on MAIN_USER.SELECTED_DESTINATION to R_BKS_RO;
+grant select on MAIN_USER.SERVICE_DELIVERY_CONTRACT to R_BKS_RO;
+grant select on MAIN_USER.SERVICE_LOCATION to R_BKS_RO;
+grant select on MAIN_USER.SERVICE_SUBSCRIPTION to R_BKS_RO;
+grant select on MAIN_USER.SERVICE_SUBSCRIPTION_DEP to R_BKS_RO;
+grant select on MAIN_USER.SERVICE_TICKET_POSITION to R_BKS_RO;
+grant select on MAIN_USER.SERVICE_TICKET_POSITION_DEP to R_BKS_RO;
+grant select on MAIN_USER.SERV_DELIV_CONT_PRODUCT_COMMIT to R_BKS_RO;
+grant select on MAIN_USER.SERV_SUBSCR_PRICE_PLAN_SUBSCR to R_BKS_RO;
+grant select on MAIN_USER.SKELETON_CONTRACT to R_BKS_RO;
+grant select on MAIN_USER.SKELETON_CONTRACT_PROD_COMMIT to R_BKS_RO;
+

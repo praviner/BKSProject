@@ -1,0 +1,228 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../schema/ehcache.xsd">
+
+<!--
+#  START HEADER
+#  File:                $Workfile:   ehcache.xml.template  $
+#  Author:              $Author:   makuier  $
+#  Revision:            $Revision:   1.3  $,
+#  Purpose:             Template for ehcache.xml
+#  Last Change:         $Date:   Mar 13 2009 14:01:26  $
+#  Change history:
+#  $Log:   //PVCS_BKS/archives/BKS/CF/cfg_templates/ehcache.xml.template-arc  $
+#
+#   Rev 1.3   Mar 13 2009 14:01:26   makuier
+#Point xsd in schema folder.
+#
+#   Rev 1.2   Dec 11 2007 15:34:18   makuier
+#Correcte the variable name for listener port.
+#
+#   Rev 1.1   Nov 28 2007 18:18:38   makuier
+#Some improvement
+#
+#   Rev 1.0   Nov 06 2007 15:18:58   makuier
+#Initial revision.
+#
+#  END HEADER
+-->
+
+
+    <diskStore path="java.io.tmpdir"/>
+
+    <cacheManagerEventListenerFactory class="" properties=""/>
+
+
+    <!--
+  
+    ########################
+    # Templated parameters #
+    ########################
+    
+    #START PARAMETER
+    #Parameter:         ehcache.transport.MulticastGroupAddress
+    #ValidFrom:         BKS-API-25
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     STRING
+    #ValidValues:       A valid multicast group address
+    #DefaultValue:      -
+    #ExampleValue:      230.0.0.1
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.11.07
+    #Last_Modified_By   makuier
+    #Description:       specify a valid multicast group address
+    #END PARAMETER
+    
+    
+    #START PARAMETER
+    #Parameter:         ehcache.transport.MulticastGroupPort
+    #ValidFrom:         BKS-API-25
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     NUMBER
+    #ValidValues:       A dedicated port for the multicast heartbeat
+    #DefaultValue:      -
+    #ExampleValue:      5012
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.11.07
+    #Last_Modified_By   makuier
+    #Description:       The port number of the multicast.
+    #END PARAMETER
+    
+    #START PARAMETER
+    #Parameter:         ehcache.transport.PropagationDistance
+    #ValidFrom:         BKS-API-25
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     NUMBER
+    #ValidValues:       A value between 0 and 255 which determines how far the packets will propagate.
+    #DefaultValue:      -
+    #ExampleValue:      32
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.11.07
+    #Last_Modified_By   makuier
+    #Description:       the restrictions are:
+    #Description:       0   - the same host
+    #Description:       1   - the same subnet
+    #Description:       32  - the same site
+    #Description:       64  - the same region
+    #Description:       128 - the same continent
+    #Description:       255 - unrestricted
+    #END PARAMETER
+   
+    #START PARAMETER
+    #Parameter:         ehcache.transport.ListenerPort
+    #ValidFrom:         BKS-API-25
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     NUMBER
+    #ValidValues:       A valid port for the listener.
+    #DefaultValue:      -
+    #ExampleValue:      4001
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.11.07
+    #Last_Modified_By   makuier
+    #Description:       The port the listener listens on. This defaults to a free port if not specified.
+    #END PARAMETER
+   
+    #START PARAMETER
+    #Parameter:         ehcache.transport.ListenerTimeOut
+    #ValidFrom:         BKS-API-25
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     NUMBER
+    #ValidValues:       -
+    #DefaultValue:      -
+    #ExampleValue:      32
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.11.07
+    #Last_Modified_By   makuier
+    #Description:       The number of ms client sockets will stay open when sending
+    #Description:       messages to the listener. This should be long enough for the slowest message.
+    #Description:       If not specified it defaults 120000ms.
+    #END PARAMETER
+   
+    #START PARAMETER
+    #Parameter:         ehcache.transport.ElementsInMemory
+    #ValidFrom:         BKS-API-25
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     NUMBER
+    #ValidValues:       -
+    #DefaultValue:      -
+    #ExampleValue:      10000
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.11.07
+    #Last_Modified_By   makuier
+    #Description:       The maximum number of objects that will be created in memory
+    #END PARAMETER
+   
+    #START PARAMETER
+    #Parameter:         ehcache.transport.TimeToIdle
+    #ValidFrom:         BKS-API-25
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     NUMBER
+    #ValidValues:       -
+    #DefaultValue:      -
+    #ExampleValue:      500
+    #RecomnendedVal.:   -
+    #Optional:          Y
+    #Last_Modified:     02.11.07
+    #Last_Modified_By   makuier
+    #Description:       The maximum amount of time between accesses before an element expires
+    #Description:       Is only used if the element is not eternal.
+    #Description:       Optional attribute. A value of 0 means that an Element can idle for infinity.
+    #Description:       The default value is 0.
+    #END PARAMETER
+   
+    #START PARAMETER
+    #Parameter:         ehcache.transport.TimeToLive
+    #ValidFrom:         BKS-API-25
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     NUMBER
+    #ValidValues:       -
+    #DefaultValue:      -
+    #ExampleValue:      500
+    #RecomnendedVal.:   -
+    #Optional:          Y
+    #Last_Modified:     02.11.07
+    #Last_Modified_By   makuier
+    #Description:       The maximum time between creation time and when an element expires.
+    #Description:       Is only used if the element is not eternal.
+    #Description:       Optional attribute. A value of 0 means that an Element can idle for infinity.
+    #Description:       The default value is 0.
+    #END PARAMETER
+   
+    -->
+    
+   <cacheManagerPeerProviderFactory
+            class="net.sf.ehcache.distribution.RMICacheManagerPeerProviderFactory"
+            properties="peerDiscovery=automatic,
+                        multicastGroupAddress=${ehcache.transport.MulticastGroupAddress},
+                        multicastGroupPort=${ehcache.transport.MulticastGroupPort}, 
+                        timeToLive=${ehcache.transport.PropagationDistance}"
+            propertySeparator=","
+            />
+
+    <cacheManagerPeerListenerFactory
+            class="net.sf.ehcache.distribution.RMICacheManagerPeerListenerFactory"
+            properties="port=${ehcache.transport.ListenerPort}, socketTimeoutMillis=${ehcache.transport.ListenerTimeOut}" />
+
+
+    <!--
+    Mandatory Default Cache configuration. These settings will be applied to caches
+    created programmtically using CacheManager.add(String cacheName).
+
+    The defaultCache has an implicit name "default" which is a reserved cache name.
+    -->
+    <defaultCache
+            maxElementsInMemory="10000"
+            eternal="false"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            overflowToDisk="true"
+            diskSpoolBufferSizeMB="30"
+            maxElementsOnDisk="10000000"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU"
+            />
+
+    <cache name="BksCache" 
+           maxElementsInMemory="${ehcache.transport.ElementsInMemory}" 
+           eternal="false"
+           timeToIdleSeconds="${ehcache.transport.TimeToIdle}" 
+           timeToLiveSeconds="${ehcache.transport.TimeToLive}"
+           overflowToDisk="true">
+       <cacheEventListenerFactory
+                        class="net.sf.ehcache.distribution.RMICacheReplicatorFactory"/>
+
+    </cache>        
+</ehcache>

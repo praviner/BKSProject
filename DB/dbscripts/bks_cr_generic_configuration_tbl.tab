@@ -1,0 +1,34 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_generic_configuration_tbl.tab  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_generic_configuration_tbl.tab-arc   1.0   Nov 27 2008 14:01:22   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-24075 "Umstellung WOE auf AAW-Architektur"
+-- Reference data for BKS service subscription data mapping
+--
+--
+--#########################################################################*/
+
+create table BKS_GENERIC_CONFIGURATION (
+   VALUE_ID                     varchar2(60) not null,
+   SOURCE_PRODUCT_CODE          varchar2(5) not null,
+   SOURCE_SERVICE_CODE          varchar2(5) not null,
+   SOURCE_SERVICE_CHAR_CODE     varchar2(5) null,
+   SOURCE_FIELD_NUMBER          number(3) null,
+   SOURCE_COLUMN                varchar2(30) null,
+   TARGET_ATTRIBUTE_PATH        varchar2(360) not null,
+   DEFAULT_VALUE                varchar2(60) null,
+   VALUE_TYPE                   varchar2(16) not null,
+   APPLY_METHOD                 varchar2(60) null,
+   TARGET_MULTIPLE_OCCURRENCE   varchar2(1) not null,
+   RDS_ID                       varchar2(60) null,
+   VALID_FROM                   date not null,
+   VALID_UNTIL                  date not null
+);
+

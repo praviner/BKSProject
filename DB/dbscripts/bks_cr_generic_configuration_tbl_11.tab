@@ -1,0 +1,18 @@
+/*
+--#########################################################################
+--
+-- Script Name  :        $Workfile:   bks_cr_generic_configuration_tbl_11.tab  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_generic_configuration_tbl_11.tab-arc   1.0   
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+-- Added a new column named LAST_VERSION for the RMS150240_PPM155469_Increase Of Revenue
+--
+--
+--#########################################################################*/
+
+
+ALTER TABLE BKS_GENERIC_CONFIGURATION
+ADD LAST_VERSION VARCHAR2(60);

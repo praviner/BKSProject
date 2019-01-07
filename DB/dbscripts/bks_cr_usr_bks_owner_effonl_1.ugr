@@ -1,0 +1,23 @@
+/*
+-- #######################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_usr_bks_owner_effonl_1.ugr  $ 
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_usr_bks_owner_effonl_1.ugr-arc   1.0   May 07 2014 13:41:58   makuier  $ 
+-- Revision     :  $Revision:   1.0  $
+-- 
+-- -----------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT18232 - D2 service providing
+--     
+-- History      :  $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_usr_bks_owner_effonl_1.ugr-arc  $
+--
+--   Rev 1.0   May 07 2014 13:41:58   makuier
+--Initial revision.
+--
+--
+-- #######################################################################
+*/
+
+GRANT CREATE DATABASE LINK TO BKS_OWNER;

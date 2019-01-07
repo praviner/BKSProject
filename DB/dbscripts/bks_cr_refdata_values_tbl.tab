@@ -1,0 +1,27 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_refdata_values_tbl.tab  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_refdata_values_tbl.tab-arc   1.0   Nov 28 2007 10:07:02   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Reference data for BKS customer data mapping
+--
+--
+--#########################################################################*/
+
+@ConfigEnvSpecifics.sql
+create table BKS_REFDATA_VALUES (
+   RDS_ID            varchar2(60) not null,
+   RDS_KEY           varchar2(30) not null,
+   SOURCE_VALUE_ID   varchar2(60) not null,
+   VALID_FROM        date,
+   VALID_UNTIL       date
+)
+ &&ONL_CCM_SMALL_TAB;
+ 

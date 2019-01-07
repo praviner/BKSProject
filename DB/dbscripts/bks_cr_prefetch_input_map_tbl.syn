@@ -1,0 +1,17 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_usr_bks_user_effonl.ugr  $ 
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_usr_bks_user_effonl.ugr-arc   1.1   05 Sep 2007 12:20:34   dortmann  $ 
+-- Revision     :  $Revision:   1.1  $
+-- 
+-- -----------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+create public synonym PREFETCH_INPUT_MAP for PREFETCH_INPUT_MAP;
+ 

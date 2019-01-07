@@ -1,0 +1,17 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_prefetch_input_map_tbl.ugr  $ 
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_prefetch_input_map_tbl.ugr-arc   1.0   Dec 04 2007 16:22:16   huptasch  $ 
+-- Revision     :  $Revision:   1.0  $
+-- 
+-- -----------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+grant select on PREFETCH_INPUT_MAP to R_BKS_RO;
+

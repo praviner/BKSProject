@@ -1,0 +1,21 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_al_bks_user_tbl_19.ugr  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_al_bks_user_tbl_19.ugr-arc   1.0   Jun 11 2015 16:19:58   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-24000 
+--
+--
+--#########################################################################*/
+
+grant select on MAIN_USER.PERM_DEF  to BKS_USER;
+grant select on MAIN_USER.PERM_BEW  to BKS_USER;
+grant select on MAIN_USER.SOURCE_SYS  to BKS_USER;
+grant select on MAIN_USER.PERMISSION_PREFERENCE  to BKS_USER;
+grant select on MAIN_USER.PERMISSION_PREFERENCE_DETAIL  to BKS_USER;

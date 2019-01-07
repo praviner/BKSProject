@@ -1,0 +1,141 @@
+<!--
+    ANT Build file for the BKS project
+
+    Author: Rusbe Makuie
+    Date: 2007-08-08
+-->
+<project name="BKS1" default="compile" basedir=".">
+	<description>ANT build file for the BKS project</description>
+
+	<!-- Global properties for this script -->
+	<property name="generatedsrc" location="BKS/generated"/>
+	<property name="src" location="BKS/src"/>
+	<property name="bin" location="BKS/WEB-INF/classes"/>
+	<property name="lib" location="BKS/WEB-INF/lib"/>
+	<property name="doc" location="BKS/doc"/>
+	<property name="jar" location="BKS/jar"/>
+	<property name="xsd" location="BKS/xsd/schema"/>
+	<property name="tomcat" location="C:\Program Files\Apache Software Foundation\Tomcat 6.0"/>
+	
+	<!-- Creates a time stamp and the directory structure -->
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${bin}"/>
+		<mkdir dir="${doc}"/>
+		<mkdir dir="${jar}"/>
+		<mkdir dir="${generatedsrc}"/>
+	</target>
+
+	<!-- generate and compile the code for the service bus -->
+
+	<path id="classpath">
+		<!--for use with bundled ant-->
+		<fileset dir="${lib}" includes="*.jar" />		
+	</path>
+
+
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+		<classpath refid="classpath" />
+	</taskdef>
+	
+	<!--compile Java source files -->
+	<target name="compile_epsm_ccm" description="Compile all Java source files">
+		<xjc binding="${xsd}/binding-003.xjb" extension="true" schema="${xsd}/basic.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/BKS-001.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/BKS-002.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/BKS-003.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/BKS-004.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/BKS-005.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/BKS-006.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/BKS-OSF-001.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/BKSReco-001.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/BKS-WBCI-VF-002.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/BKS-WBCI-VF-KIAS-001.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/BKS-WBCI-001.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-001.xjb" extension="true" schema="${xsd}/EPSM-CCM-001.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/EPSM-BKS-GetCcbOpenOrder-001.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/EPSM-CCM-ConsolidateSubscriptionData-001.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/GetFNPCustomerRecoDataCallback-004.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>		
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/COM-PROV-001.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>		
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/VFZHCustomer-001.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>		
+		<xjc binding="${xsd}/binding-002.xjb" extension="true" schema="${xsd}/SIDCOM-FNPOrder-001.xsd" destdir="${generatedsrc}" removeOldOutput="yes"/>
+		<delete dir="${generatedsrc}/de/arcor/aaw/auftragsmodell"/>
+		<delete includeemptydirs="true">
+			<fileset dir="${generatedsrc}/net">
+			    <exclude name="**/orderschema/*"/>
+			    <exclude name="**/epsm_bks_getccbopenorder_001/*"/>
+			    <exclude name="**/epsm_ccm_consolidatesubscriptiondata_001/*"/>
+			</fileset>
+		</delete>
+		<javac srcdir="${generatedsrc}" destdir="${bin}" debug="on">
+			<classpath refid="classpath" />
+		</javac>
+	</target>
+	
+	<!-- Compile the java code from ${src} into ${bin} -->
+	<target name="compile" depends="init" description="Compiles all source files" >
+		<javac srcdir="${src}" destdir="${bin}" excludes="**/httprequesthandler/*.java,**/EaiClient.java" debug="true" >
+			<classpath>
+				<fileset dir="${lib}">
+					<include name="**/*.jar"/>
+				</fileset>
+				<fileset dir="${tomcat}">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</javac>
+		<copy  todir="${tomcat}/webapps/BKS/WEB-INF/classes">
+			<fileset dir="${bin}" excludes="**/*.java,**/EaiClient.*"/>
+		</copy>
+	</target>
+
+	<!-- Deletes the ${build} and ${doc} directory trees -->
+	<target name="clean" description="Deletes classes and archive directories" >
+		<delete dir="${bin}"/>
+		<delete dir="${doc}"/>
+		<delete dir="${generatedsrc}"/>
+	</target>
+	
+	<target name="clean_war" description="Deletes classes and archive directories" >
+		<delete file="${tomcat}/webapps/BKS/BKS.war"/>
+	</target>
+	
+	<!-- Generate javadoc 
+	<target name="javadoc" depends="init" description="Generates the source code documentation">
+		<javadoc access="protected" author="true" destdir="${doc}" nodeprecated="false" doctitle="BKS API"
+			nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false"
+			packagenames="net.arcor.fif.messagecreator,net.arcor.fif.examples,net.arcor.fif.transport,net.arcor.fif.apps,net.arcor.fif.common,net.arcor.fif.db,net.arcor.fif.client,net.arcor.fif.server"
+		    sourcepath="${src}" splitindex="true" use="true" version="true">
+			<classpath>
+				<fileset dir="${lib}">
+					<include name="**/*.jar"/>
+				</fileset>
+			</classpath>
+		</javadoc>
+	</target>
+    -->
+
+	<target name="delete_duplicates" description="Deletes classes " >
+		<delete dir="${bin}/de/arcor/aaw/auftragsmodell"/>
+		<delete dir="${generatedsrc}/de/arcor/aaw/auftragsmodell"/>
+		<delete dir="${bin}/net/arcor/epsm*"/>
+		<delete dir="${generatedsrc}/net/arcor/epsm*"/>
+	</target>
+	
+<!-- Creates a full clean build and generates javadoc -->
+	<target name="full" depends="clean, init,compile_epsm_ccm,  compile,package" 
+	description="Performs a full build from scratch and generates javadoc"/>
+
+	<target name="package"  depends="clean_war,compile" description="Assemble the tested application code and resources into a distributable archive.">		
+		<copy  todir="${tomcat}/webapps/BKS/WEB-INF/lib">
+			<fileset dir="${lib}"/>
+		</copy>
+		<copy  todir="${tomcat}/webapps/BKS/WEB-INF/classes/schema">
+			<fileset dir="${xsd}"/>
+		</copy>
+		<war warfile="${tomcat}/webapps/BKS/BKS.war" basedir="${tomcat}/webapps/BKS/" webxml="${tomcat}/webapps/BKS/WEB-INF/web.xml">
+			<exclude name="**/web.xml"/>
+			<exclude name="**/EaiClient.*"/>
+		</war>
+	</target>
+</project>

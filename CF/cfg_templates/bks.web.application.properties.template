@@ -1,0 +1,275 @@
+#START PARAMETER
+#Parameter:         bks.db.effonl.Driver
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Class name
+#DefaultValue:      -
+#ExampleValue:      oracle.jdbc.driver.OracleDriver
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The name of the JDBC database driver to use.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.EncryptionKey
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Encryption key used to encrypt the password.
+#DefaultValue:      -
+#ExampleValue:      pshsodoehseffjlhsohedqfpnpfssmpleggfqpprnlhjhess
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The encryption key that was used to encrypt the database password.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.refdata.ConnectString
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Fully qualified URL for JDBC
+#DefaultValue:      -
+#ExampleValue:      jdbc:oracle:thin:@hpdbvb01:1535:ccmdev
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The connection string to use to connect to the database.
+#Description:       (Format: jdbc:oracle:thin:@hostname:port:dbname)
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.refdata.User
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       All users of database.
+#DefaultValue:      -
+#ExampleValue:      ccm_user
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The user name to use to connect to the database.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.refdata.Password
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Valid password.
+#DefaultValue:      -
+#ExampleValue:      ernirnlihlrieppg
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The ecnrypted password to use to connect to the database (encrypted in CCB format).
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.effonl.ConnectString
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Fully qualified URL for JDBC
+#DefaultValue:      -
+#ExampleValue:      jdbc:oracle:thin:@hpdbvb01:1535:ccmdev
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The connection string to use to connect to the database.
+#Description:       (Format: jdbc:oracle:thin:@hostname:port:dbname)
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.effonl.User
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       All users of database.
+#DefaultValue:      -
+#ExampleValue:      ccm_user
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The user name to use to connect to the database.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.effonl.Password
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Valid password.
+#DefaultValue:      -
+#ExampleValue:      ernirnlihlrieppg
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The ecnrypted password to use to connect to the database (encrypted in CCB format).
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.onl.ConnectString
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Fully qualified URL for JDBC
+#DefaultValue:      -
+#ExampleValue:      jdbc:oracle:thin:@hpdbvb01:1535:ccmdev
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The connection string to use to connect to the database.
+#Description:       (Format: jdbc:oracle:thin:@hostname:port:dbname)
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.onl.User
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       All users of database.
+#DefaultValue:      -
+#ExampleValue:      ccm_user
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The user name to use to connect to the database.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.onl.Password
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Valid password.
+#DefaultValue:      -
+#ExampleValue:      ernirnlihlrieppg
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The ecnrypted password to use to connect to the database (encrypted in CCB format).
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.SqlMapConfig
+#ValidFrom:         BKS-152
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       path to the configuration file.
+#DefaultValue:      -
+#ExampleValue:      etc/webSqlMapConfig.xml
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The location of ibatis SQL map configuration file.
+#END PARAMETER
+Driver=${bks.db.Driver}
+EncryptionKey=${bks.db.EncryptionKey}
+refdata.ConnectString=${bks.db.refdata.ConnectString}
+refdata.User=${bks.db.refdata.User}
+refdata.Password=${bks.db.refdata.Password}
+effonl.ConnectString=${bks.db.effonl.ConnectString}
+effonl.User=${bks.db.effonl.User}
+effonl.Password=${bks.db.effonl.Password}
+onl.ConnectString=${bks.db.onl.ConnectString}
+onl.User=${bks.db.onl.User}
+onl.Password=${bks.db.onl.Password}
+SqlMapConfig=${bks.db.SqlMapConfig}
+
+# START PARAMETER
+#     Parameter:              performance.request.systemId
+#     ValidFrom:              
+#     ValidTo:                open
+#     Components:             
+#     ParameterType:          STRING
+#     ValidValues:            N/N
+#     DefaultValue:           -
+#     ExampleValue:           PKAT
+#     RecomnendedVal.:        -
+#     Optional:               N
+#     Last_Modified:          
+#     Last_Modified_By  
+#     Description:            eindeutige Kennung der Komponente
+# END PARAMETER
+perf.request.systemId=${performance.request.systemId}
+
+# START PARAMETER
+#     Parameter:              performance.request.computerId
+#     ValidFrom:              
+#     ValidTo:                open
+#     Components:             
+#     ParameterType:          STRING
+#     ValidValues:            N/N
+#     DefaultValue:           -
+#     ExampleValue:           gamep02
+#     RecomnendedVal.:        -
+#     Optional:               N
+#     Last_Modified:          
+#     Last_Modified_By  
+#     Description:            current host name resp. ressource group name
+# END PARAMETER
+perf.request.computerId=${performance.request.computerId}
+
+# START PARAMETER
+#     Parameter:              performance.request.instanceId
+#     ValidFrom:              
+#     ValidTo:                open
+#     Components:             
+#     ParameterType:          STRING
+#     ValidValues:            N/N
+#     DefaultValue:           -
+#     ExampleValue:           ANF21
+#     RecomnendedVal.:        -
+#     Optional:               N
+#     Last_Modified:          
+#     Last_Modified_By  
+#     Description:            eine eindeutige Kennung der Tomcat-Instanz
+# END PARAMETER
+perf.request.instanceId=${performance.request.instanceId}
+
+# START PARAMETER
+#     Parameter:              performance.request.delimiter
+#     ValidFrom:              
+#     ValidTo:                open
+#     Components:             
+#     ParameterType:          STRING
+#     ValidValues:            N/N
+#     DefaultValue:           -
+#     ExampleValue:           _
+#     RecomnendedVal.:        -
+#     Optional:               N
+#     Last_Modified:          
+#     Last_Modified_By  
+#     Description:            (underscore)
+# END PARAMETER
+perf.request.delimiter=${performance.request.delimiter}
+

@@ -1,0 +1,20 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_generic_configuration_tbl_7.tab  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_generic_configuration_tbl_7.tab-arc   1.0   Apr 30 2010 14:48:18   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-24075 "Umstellung WOE auf AAW-Architektur"
+-- Reference data for BKS service subscription data mapping
+--
+--
+--#########################################################################*/
+
+ALTER TABLE BKS_GENERIC_CONFIGURATION ADD (SID_ATTRIBUTE_PATH VARCHAR2(360) NULL);
+ALTER TABLE BKS_GENERIC_CONFIGURATION ADD (OPEN_ORDER_INDICATOR VARCHAR2(1) NULL);
+

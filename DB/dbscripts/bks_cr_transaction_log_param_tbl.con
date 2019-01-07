@@ -1,0 +1,17 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_transaction_log_param_tbl.con  $ 
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_transaction_log_param_tbl.con-arc   1.0   Dec 09 2011 14:11:56   makuier  $ 
+-- Revision     :  $Revision:   1.0  $
+-- 
+-- -----------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+ALTER TABLE BKS_TRANSACTION_LOG_PARAM
+  ADD CONSTRAINT BKS_TRANSACTION_LOG_PARAM_PK PRIMARY KEY (CORRELATION_ID,ERROR_LOG_SEQ);

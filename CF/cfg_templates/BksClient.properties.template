@@ -1,0 +1,570 @@
+###############################################################################
+#
+# Configuration file for the BKS DatabaseClient application
+#
+# @author Rusbe Makuie
+#
+###############################################################################
+
+####################
+# GENERAL SETTINGS #
+####################
+
+#START PARAMETER
+#Parameter:         bksservicebusclient.servicebusclient.BeanConfigurationFile
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Path + Filename
+#DefaultValue:      -
+#ExampleValue:      etc/mcf-bksservice.xml,etc/applicationContext-common.xml,\
+#                   etc/applicationContext-mcf-rdsClient-config.xml,\
+#                   etc/applicationContext-rdsClient-config.xml,\
+#                   etc/applicationContext-quartz-config.xml
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     08.08.07
+#Last_Modified_By   makuier
+#Description:       Indicates the location of the configuration file for the message connector framework. The location of the file is relative to the work directory.
+#END PARAMETER
+databaseclient.BeanConfigurationFile=${bksservicebusclient.servicebusclient.BeanConfigurationFile}
+
+databaseclient.SchemaName=schema/EPSM-CCM-001.xsd
+databaseclient.InputPattern=\[A-Za-z\u00C4\u00E4\u00DC\u00FC\u00D6\u00F6\u00DF\u0020\u00E5\u010D\u00E00-9\-.&\]*
+
+#START PARAMETER
+#Parameter:         bksservicebusclient.EnablePerformanceLogging
+#ValidFrom:         BKS-API-26
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       true/false
+#DefaultValue:      -
+#ExampleValue:      true
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.08.07
+#Last_Modified_By   makuier
+#Description:       enables/disables the performance logging
+#END PARAMETER
+databaseclient.EnableDbLogging=${bksservicebusclient.EnablePerformanceLogging}
+
+#START PARAMETER
+#Parameter:         databaseclient.IsCramerBitstreamMigrationDone
+#ValidFrom:         BKS-API-56
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       true/false
+#DefaultValue:      true
+#ExampleValue:      true
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.10.16
+#Last_Modified_By   makuier
+#Description:       This flag has to be set to false until BitStream Cramer migration is fully done. 
+#                   After the migration is full done this flag must be set to true
+#END PARAMETER
+databaseclient.IsCramerBitstreamMigrationDone=${bksservicebusclient.IsCramerBitstreamMigrationDone}
+
+#START PARAMETER
+#Parameter:         bksservicebusclient.MaxRetries
+#ValidFrom:         BKS-API-26
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       a valid positive integer
+#DefaultValue:      -
+#ExampleValue:      10
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.08.07
+#Last_Modified_By   makuier
+#Description:       The maximum number of seconds to wait for ref data load
+#END PARAMETER
+databaseclient.MaxRetries=${bksservicebusclient.MaxRetries}
+
+#START PARAMETER
+#Parameter:         bksservicebusclient.EnableFuzzySearch
+#ValidFrom:         BKS-API-37
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       true/false
+#DefaultValue:      -
+#ExampleValue:      true
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.12.10
+#Last_Modified_By   makuier
+#Description:       Enables/Disables the fuzzy search
+#END PARAMETER
+databaseclient.EnableFuzzySearch=${bksservicebusclient.EnableFuzzySearch}
+
+#START PARAMETER
+#Parameter:         bksservicebusclient.MaxReturnedCustomer
+#ValidFrom:         BKS-API-37
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       a valid positive integer
+#DefaultValue:      20
+#ExampleValue:      20
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.12.10
+#Last_Modified_By   makuier
+#Description:       The maximum number of returned customers in fuzzy search
+#END PARAMETER
+databaseclient.MaxReturnedCustomer=${bksservicebusclient.MaxReturnedCustomer}
+
+#START PARAMETER
+#Parameter:         bksservicebusclient.MaxNoOfProducts
+#ValidFrom:         BKS-API-38CP
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       a valid positive integer
+#DefaultValue:      500
+#ExampleValue:      500
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.12.10
+#Last_Modified_By   makuier
+#Description:       The maximum number of returned customers reconciliation search
+#END PARAMETER
+databaseclient.MaxNoOfProducts=${bksservicebusclient.MaxNoOfProducts}
+
+#START PARAMETER
+#Parameter:         bksservicebusclient.TimeToLive
+#ValidFrom:         BKS-API-41
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       a valid positive integer
+#DefaultValue:      0
+#ExampleValue:      3600000
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     19.03.12
+#Last_Modified_By   makuier
+#Description:       The time that the message stays in queue if not picked up in ms.
+#Description:       0 mean eternity.
+#END PARAMETER
+servicebusclient.TimeToLive=${bksservicebusclient.TimeToLive}
+
+#START PARAMETER
+#Parameter:         bksservicebusclient.TimeOut
+#ValidFrom:         BKS-API-41
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       a valid positive integer
+#DefaultValue:      100000
+#ExampleValue:      10000
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     19.03.12
+#Last_Modified_By   makuier
+#Description:       The time out for synchronous messages.
+#END PARAMETER
+servicebusclient.TimeOut=${bksservicebusclient.TimeOut}
+
+#START PARAMETER
+#Parameter:         databaseclient.GetFNPCustomerSomDataParallel
+#ValidFrom:         BKS-API-55
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       a valid positive integer
+#DefaultValue:      5
+#ExampleValue:      5
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     19.06.16
+#Last_Modified_By   makuier
+#Description:       The maximum number of internal threads. This is the maximum number of threads which BKS request 
+#                    GetFNPCustomerSomData to internally process bundles in parallel. This is an additional mechanism 
+#                    other than parallel processing of separate requests.
+#END PARAMETER
+databaseclient.GetFNPCustomerSomDataParallel=${bksservicebusclient.GetFNPCustomerSomDataParallel}
+
+#####################
+# DATABASE SETTINGS #
+#####################
+
+# The data source used for fetching reference data.
+db.RefDataSource=refdata
+
+#START PARAMETER
+#Parameter:         bks.db.schemaname.effonl
+#ValidFrom:         BKS-API-25
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Schema name 
+#DefaultValue:      -
+#ExampleValue:      MAIN_USER
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The schema name for schema_availability table.
+#END PARAMETER
+db.effonl.SchemaName=${bks.db.schemaname.effonl}
+
+#START PARAMETER
+#Parameter:         bks.db.schemaname.onl
+#ValidFrom:         BKS-API-25
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Schema name 
+#DefaultValue:      -
+#ExampleValue:      MAIN_USER
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The schema name for schema_availability table.
+#END PARAMETER
+db.onl.SchemaName=${bks.db.schemaname.onl}
+
+#START PARAMETER
+#Parameter:         bks.db.schemaname.refdata
+#ValidFrom:         BKS-API-25
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Schema name 
+#DefaultValue:      -
+#ExampleValue:      DUMMY
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The schema name for schema_availability table.
+#END PARAMETER
+db.refdata.SchemaName=${bks.db.schemaname.refdata}
+
+
+#START PARAMETER
+#Parameter:         bks.db.Driver
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Class name
+#DefaultValue:      -
+#ExampleValue:      oracle.jdbc.driver.OracleDriver
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The name of the JDBC database driver to use.
+#END PARAMETER
+databaseclient.Driver=${bks.db.Driver}
+
+#START PARAMETER
+#Parameter:         bks.db.EncryptionKey
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Encryption key used to encrypt the password.
+#DefaultValue:      -
+#ExampleValue:      pshsodoehseffjlhsohedqfpnpfssmpleggfqpprnlhjhess
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The encryption key that was used to encrypt the database password.
+#END PARAMETER
+databaseclient.EncryptionKey=${bks.db.EncryptionKey}
+
+#START PARAMETER
+#Parameter:         bks.db.cramer.ConnectString
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Fully qualified URL for JDBC
+#DefaultValue:      -
+#ExampleValue:      jdbc:oracle:thin:@10.207.134.39:1599:cradb
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The connection string to use to connect to the database.
+#Description:       (Format: jdbc:oracle:thin:@hostname:port:dbname)
+#END PARAMETER
+databaseclient.cramer.ConnectString=${bks.db.cramer.ConnectString}
+
+#START PARAMETER
+#Parameter:         bks.db.cramer.User
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       All users of database.
+#DefaultValue:      -
+#ExampleValue:      DIM_LINK_BKS
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The user name to use to connect to the database.
+#END PARAMETER
+databaseclient.cramer.User=${bks.db.cramer.User}
+
+#START PARAMETER
+#Parameter:         bks.db.cramer.Password
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Valid password.
+#DefaultValue:      -
+#ExampleValue:      ingmolffisofhmigjnnfhrrdrgjgsmni
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The ecnrypted password to use to connect to the database (encrypted in CCB format).
+#END PARAMETER
+databaseclient.cramer.Password=${bks.db.cramer.Password}
+
+#START PARAMETER
+#Parameter:         bks.db.ConnetionTimeOut 
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     Integer
+#ValidValues:       a Valid Positive integer.
+#DefaultValue:      -
+#ExampleValue:      5 
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     7.07.17
+#Last_Modified_By   @vikas
+#Description:       DataBase Connection TimeOut //This value should be in seconds.
+#END PARAMETER
+databaseclient.ConnectionTimeOut=${bks.db.ConnectionTimeOut}  
+
+
+#START PARAMETER
+#Parameter:         bks.db.aida.ConnectString
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Fully qualified URL for JDBC
+#DefaultValue:      -
+#ExampleValue:      jdbc:oracle:thin:@ \
+#   		    (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = 10.14.33.58)(PORT = 1521))                 \
+#   		                   (ADDRESS = (PROTOCOL = TCP)(HOST = 10.14.33.59)(PORT = 1521))  \
+#   		    (LOAD_BALANCE = yes)  \
+#   		    (CONNECT_DATA =    (SERVER = DEDICATED)(SERVICE_NAME = AIDACLA_HA)  \
+#   		    (FAILOVER_MODE = (TYPE = SELECT)(METHOD = BASIC)(RETRIES = 180)(DELAY = 5)))
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The connection string to use to connect to the database.
+#Description:       (Format: jdbc:oracle:thin:@hostname:port:dbname)
+#END PARAMETER
+databaseclient.aida.ConnectString=${bks.db.aida.ConnectString}
+
+#START PARAMETER
+#Parameter:         bks.db.aida.User
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       All users of database.
+#DefaultValue:      -
+#ExampleValue:      ccm
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The user name to use to connect to the database.
+#END PARAMETER
+databaseclient.aida.User=${bks.db.aida.User}
+
+#START PARAMETER
+#Parameter:         bks.db.aida.Password
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Valid password.
+#DefaultValue:      -
+#ExampleValue:      rshsjknrofhegsef
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The ecnrypted password to use to connect to the database (encrypted in CCB format).
+#END PARAMETER
+databaseclient.aida.Password=${bks.db.aida.Password}
+
+#START PARAMETER
+#Parameter:         bks.db.zar.ConnectString
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Fully qualified URL for JDBC
+#DefaultValue:      -
+#ExampleValue:      jdbc:oracle:thin:@10.207.132.93:1615:zarentw
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The connection string to use to connect to the database.
+#Description:       (Format: jdbc:oracle:thin:@hostname:port:dbname)
+#END PARAMETER
+databaseclient.zar.ConnectString=${bks.db.zar.ConnectString}
+
+#START PARAMETER
+#Parameter:         bks.db.zar.User
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       All users of database.
+#DefaultValue:      -
+#ExampleValue:      BKS_USER
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The user name to use to connect to the database.
+#END PARAMETER
+databaseclient.zar.User=${bks.db.zar.User}
+
+#START PARAMETER
+#Parameter:         bks.db.zar.Password
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Valid password.
+#DefaultValue:      -
+#ExampleValue:      omhlihknhiemeneglffpnejiginmlihr
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The ecnrypted password to use to connect to the database (encrypted in CCB format).
+#END PARAMETER
+databaseclient.zar.Password=${bks.db.zar.Password}
+
+
+#START PARAMETER
+#Parameter:         bksservicebusclient.maxAidaConnectRetries
+#ValidFrom:         BKS-API-26
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       a valid positive integer
+#DefaultValue:      -
+#ExampleValue:      4
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.08.07
+#Last_Modified_By   makuier
+#Description:       The maximum number connection retries for AIDA database connection.
+#END PARAMETER
+databaseclient.maxAidaConnectRetries=${bksservicebusclient.maxAidaConnectRetries}
+
+
+
+#START PARAMETER
+#Parameter:         bks.cramer.mockCramerCall
+#ValidFrom:         BKS-API-42
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Y or N.
+#DefaultValue:      N
+#ExampleValue:      N
+#RecomnendedVal.:   -
+#Optional:          Y
+#Last_Modified:     07.11.13
+#Last_Modified_By   makuier
+#Description:       Flag instructing BKS to mock the Cramer Call.
+#END PARAMETER
+USE_CRAMER_MOCK_UP=${bks.cramer.mockCramerCall}
+
+#START PARAMETER
+#Parameter:         bks.zar.mockZarCall
+#ValidFrom:         BKS-API-42
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Y or N.
+#DefaultValue:      N
+#ExampleValue:      N
+#RecomnendedVal.:   -
+#Optional:          Y
+#Last_Modified:     07.11.13
+#Last_Modified_By   makuier
+#Description:       Flag instructing BKS to mock the ZAR Call.
+#END PARAMETER
+USE_ZAR_MOCK_UP=${bks.zar.mockZarCall}
+
+#START PARAMETER
+#Parameter:         bks.db.bat.ConnectString
+#ValidFrom:         BKS-API-57
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Fully qualified URL for JDBC
+#DefaultValue:      -
+#ExampleValue:      jdbc:oracle:thin:@10.207.132.93:1615:zarentw
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     10.03.17
+#Last_Modified_By   makuier
+#Description:       The connection string to use to connect to the database.
+#Description:       (Format: jdbc:oracle:thin:@hostname:port:dbname)
+#END PARAMETER
+databaseclient.bat.ConnectString=${bks.db.bat.ConnectString}
+
+#START PARAMETER
+#Parameter:         bks.db.bat.User
+#ValidFrom:         BKS-API-57
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       All users of database.
+#DefaultValue:      -
+#ExampleValue:      BKS_USER
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     10.03.17
+#Last_Modified_By   makuier
+#Description:       The user name to use to connect to the database.
+#END PARAMETER
+databaseclient.bat.User=${bks.db.bat.User}
+
+#START PARAMETER
+#Parameter:         bks.db.bat.Password
+#ValidFrom:         BKS-API-57
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Valid password.
+#DefaultValue:      -
+#ExampleValue:      omhlihknhiemeneglffpnejiginmlihr
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     10.03.17
+#Last_Modified_By   makuier
+#Description:       The ecnrypted password to use to connect to the database (encrypted in CCB format).
+#END PARAMETER
+databaseclient.bat.Password=${bks.db.bat.Password}
+

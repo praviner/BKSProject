@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<!--
+#  START HEADER
+#  File:                $Workfile:   mcf-bksservice.xml.template  $
+#  Author:              $Author:   makuier  $
+#  Revision:            $Revision:   1.0  $,
+#  Purpose:             Template for mcf-bksservice.xml
+#  Last Change:         $Date:   May 30 2008 11:26:32  $
+#  Change history:
+#  $Log:   //PVCS_BKS/archives/BKS/CF/cfg_templates/paket/mcf-bksservice.xml.template-arc  $
+#
+#   Rev 1.0   May 30 2008 11:26:32   makuier
+#Initial revision.
+#
+#   Rev 1.6   Dec 07 2007 15:06:26   makuier
+#made the transport type configurable.
+#
+#   Rev 1.5   Dec 06 2007 14:14:44   makuier
+#Bean for DAO impl added.
+#
+#   Rev 1.4   Nov 28 2007 18:18:38   makuier
+#Some improvement
+#
+#   Rev 1.3   Nov 06 2007 15:15:58   makuier
+#Changes for 1.25
+#
+#   Rev 1.2   Sep 19 2007 12:56:16   makuier
+#Added comment header.
+#  END HEADER
+-->
+
+
+<beans>
+    
+    <import resource="bks-performance.xml"/>
+
+    <!-- Queue configuration -->
+    <bean id="messageListenerContainer"
+        class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="concurrentConsumers" value="1"/> 
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="destination" ref="listenQueue"/>
+        <property name="sessionTransacted" value="true"/>
+        <property name="messageListener" ref="requestReplyWorker"/>
+    </bean> 
+        
+    <!-- ======================================================================================== -->
+    <!-- Special service handler configurations for each service handler                          --> 
+    <!-- ======================================================================================== -->    
+    <bean id="requestReplyWorker" init-method="init"
+        destroy-method="closeSenderQueues" class="net.arcor.mcf.jms.wf.WorkflowRequestReplyWorker"
+        depends-on="referenzdatenCache">
+        <property name="listenQueue" ref="listenQueue"/>      
+        <property name="outQueue" ref="outQueue"/>        
+        <property name="jmsExpiration" value="3600000"/>
+        <property name="backoutTreshold" value="5"/>        
+        <property name="handlerConfig">
+            <ref bean="ServiceHandlerConfig"/>
+        </property>        
+        <property name="headerHandler">
+            <ref bean="HeaderHandler"/>
+        </property>        
+        <property name="serviceResolver">
+            <ref bean="ServiceResolver"/>
+        </property>    
+        <property name="useJaxbJavaPackage" value="false"/>    
+        <property name="requestContextName"  value="de.arcor.aaw.kernAAW.bks.services" />
+        <property name="requestSchemaName"   value="EPSM-CCM-001.xsd"/>        
+        <property name="responseContextName"  value="de.arcor.aaw.kernAAW.bks.services" />
+        <property name="responseSchemaName"   value="EPSM-CCM-001.xsd"/>        
+        <property name="fatalResponseContextName"  value="net.arcor.sbus.epsm_sbus_001" />
+        <property name="fatalResponseSchemaName"   value="EPSM-SBUS-001.xsd"/>
+        <property name="mcfExceptionExitHandler"     ref="mcfExceptionExitHandler"/>
+    </bean>
+    
+    <bean id="mcfExceptionExitHandler" class="net.arcor.mcf.jms.SbusExceptionExitHandler">
+    </bean>
+    
+    <bean id="pruefeBestandskundeServiceConfig"
+        class="net.arcor.mcf.config.ServiceHandlerConfigBean">
+        <property name="serviceName" value="de.arcor.aaw.kernAAW.bks.services.PruefeBestandskundeService"/>
+        <property name="handler">
+            <bean class="net.arcor.bks.requesthandler.BksServiceHandler"/>
+        </property>
+        <property name="hasReply" value="true"/>
+    </bean> 
+        
+    <bean id="pruefeBestandskundenRangerServiceConfig"
+        class="net.arcor.mcf.config.ServiceHandlerConfigBean">
+        <property name="serviceName" value="de.arcor.aaw.kernAAW.bks.services.PruefeBestandskundenRangerService"/>
+        <property name="handler">
+            <bean class="net.arcor.bks.requesthandler.BksServiceHandler"/>
+        </property>
+        <property name="hasReply" value="true"/>
+    </bean> 
+    
+    <bean id="ermittleKundenArtServiceConfig"
+        class="net.arcor.mcf.config.ServiceHandlerConfigBean">
+        <property name="serviceName" value="de.arcor.aaw.kernAAW.bks.services.ErmittleKundenArtService"/>
+        <property name="handler">
+            <bean class="net.arcor.bks.requesthandler.BksServiceHandler"/>
+        </property>
+        <property name="hasReply" value="true"/>
+    </bean> 
+    
+    <bean id="ermittleVertriebspaketWertServiceConfig"
+        class="net.arcor.mcf.config.ServiceHandlerConfigBean">
+        <property name="serviceName" value="de.arcor.aaw.kernAAW.bks.services.ErmittleVertriebspaketWertService"/>
+        <property name="handler">
+            <bean class="net.arcor.bks.requesthandler.BksServiceHandler"/>
+        </property>
+        <property name="hasReply" value="true"/>
+    </bean> 
+    
+    <bean id="ServiceHandlerConfig"
+        class="net.arcor.mcf.config.ServiceHandlerConfigSimple" init-method="init" >
+        <property name="configBeanList">
+            <list>
+                <ref bean="pruefeBestandskundeServiceConfig"/>
+                <ref bean="pruefeBestandskundenRangerServiceConfig"/>
+                <ref bean="ermittleKundenArtServiceConfig"/>
+                <ref bean="ermittleVertriebspaketWertServiceConfig"/>
+           </list>
+        </property>
+    </bean>
+     
+    <bean id="HeaderHandler" class="net.arcor.mcf.jms.HeaderHandlerCopy">
+        <property name="headerConfig">
+            <bean class="net.arcor.mcf.config.HeaderHandlerConfigSimple"/>
+        </property>
+        <property name="endpointName" value="BKS"/>
+    </bean>
+    
+    <bean id="ServiceResolver" class="net.arcor.mcf.jms.ServiceResolverXml"/>
+
+    <!--
+  
+    ########################
+    # Templated parameters #
+    ########################
+    
+    #START PARAMETER
+    #Parameter:         bksservicebus.transport.TransportType
+    #ValidFrom:         BKS-API-25
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     STRING
+    #ValidValues:       0 or 1
+    #DefaultValue:      -
+    #ExampleValue:      1
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.08.07
+    #Last_Modified_By   makuier
+    #Description:       If the queue manager and application are located in the 
+    #Description:       same machine, set the value to 0. Otherwise set it to 1.
+    #END PARAMETER
+    
+    
+    #START PARAMETER
+    #Parameter:         bksservicebus.transport.QueueManagerName
+    #ValidFrom:         BKS-API-23
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     STRING
+    #ValidValues:       A valid queue manager name
+    #DefaultValue:      -
+    #ExampleValue:      CCBSVR2E
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.08.07
+    #Last_Modified_By   makuier
+    #Description:       The name of the queue manager to connect to for requests coming from ServiceBus.
+    #END PARAMETER
+    
+    
+    #START PARAMETER
+    #Parameter:         bksservicebus.transport.QueueManagerHostName
+    #ValidFrom:         BKS-API-23
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     STRING
+    #ValidValues:       A valid queue manager host name
+    #DefaultValue:      -
+    #ExampleValue:      hp64d01
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.08.07
+    #Last_Modified_By   makuier
+    #Description:       The host name of the queue manager to connect to for requests coming from ServiceBus.
+    #END PARAMETER
+    
+    
+    #START PARAMETER
+    #Parameter:         bksservicebus.transport.QueueManagerPortNumber
+    #ValidFrom:         BKS-API-23
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     STRING
+    #ValidValues:       A valid queue manager port number
+    #DefaultValue:      -
+    #ExampleValue:      5012
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.08.07
+    #Last_Modified_By   makuier
+    #Description:       The port number of the queue manager to connect to for requests coming from ServiceBus.
+    #END PARAMETER
+    
+    
+    #START PARAMETER
+    #Parameter:         bksservicebus.transport.ServiceBusRequestQueue.QueueName
+    #ValidFrom:         BKS-API-23
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     STRING
+    #ValidValues:       A valid queue name
+    #DefaultValue:      -
+    #ExampleValue:      AAW.BKS.SBUSOUT
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.08.07
+    #Last_Modified_By   makuier
+    #Description:       The name of the queue to connect to for requests coming from ServiceBus.
+    #END PARAMETER
+    
+    
+    #START PARAMETER
+    #Parameter:         bksservicebus.transport.ServiceBusReplyQueue.QueueName
+    #ValidFrom:         BKS-API-23
+    #ValidTo:           open
+    #Components:        BKS
+    #ParameterType:     STRING
+    #ValidValues:       A valid queue name
+    #DefaultValue:      -
+    #ExampleValue:      AAW.BKS.SBUSIN
+    #RecomnendedVal.:   -
+    #Optional:          N
+    #Last_Modified:     02.08.07
+    #Last_Modified_By   makuier
+    #Description:       The name of the queue to connect to for replies to ServiceBus.
+    #END PARAMETER
+    
+    -->
+    
+    <bean id="connectionFactory" class="com.ibm.mq.jms.MQQueueConnectionFactory">
+        <property name="transportType" value="${bksservicebus.transport.TransportType}" />
+        <property name="queueManager" value="${bksservicebus.transport.QueueManagerName}" />
+        <property name="hostName" value="${bksservicebus.transport.QueueManagerHostName}" />
+        <property name="port" value="${bksservicebus.transport.QueueManagerPortNumber}" />
+        <property name="channel" value="CLIENT.${bksservicebus.transport.QueueManagerName}" />
+    </bean>
+    
+    <bean id="listenQueue" class="com.ibm.mq.jms.MQQueue">
+        <constructor-arg index="0" value="${bksservicebus.transport.QueueManagerName}" />
+        <constructor-arg index="1" value="${bksservicebus.transport.ServiceBusRequestQueue.QueueName}" />
+    </bean>
+    
+    <bean id="outQueue" class="com.ibm.mq.jms.MQQueue">
+        <constructor-arg index="0" value="" />
+        <constructor-arg index="1" value="${bksservicebus.transport.ServiceBusReplyQueue.QueueName}" />
+    </bean>
+        
+    <bean id="bksDataAccessObject" class="net.arcor.bks.db.BksDataAccessObjectImpl" singleton="false"/>
+
+    <bean id="cacheManager"
+        class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        
+        <property name="configLocation">
+            <value>classpath:ehcache.xml</value> 
+        </property>
+        
+    </bean>
+    
+    <bean id="ehCache"
+        class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+        <property name="cacheManager">
+            <ref local="cacheManager" />
+        </property>
+        <property name="cacheName">
+            <value>BksCache</value>
+        </property>
+    </bean>    
+</beans>

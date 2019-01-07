@@ -1,0 +1,19 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_product_function_map_tbl_1.tab  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_product_function_map_tbl_1.tab-arc   1.0   Nov 17 2010 11:37:14   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Reference data for BKS customer data mapping
+--
+--
+--#########################################################################*/
+ 
+ALTER TABLE PRODUCT_FUNCTION_MAP MODIFY FUNCTION_VARIANT   varchar2(32) ;
+ 

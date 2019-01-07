@@ -1,0 +1,19 @@
+/******************************************************************************
+* HEADER       : $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_account_balance_bat.ugr-arc   1.0   Mar 22 2017 11:49:32   makuier  $
+* REVISION     : $Revision:   1.0  $
+* MODULENAME   : $Workfile:   bks_cr_account_balance_bat.ugr  $
+* AUTHOR       : Suma Bangi
+*
+* DESCRIPTION  : Grant select on ACCOUNT_BALANCE table to BKS_USER on BAT.
+*
+* HISTORY      : $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_account_balance_bat.ugr-arc  $
+--
+--   Rev 1.0   Mar 22 2017 11:49:32   makuier
+--Initial revision.
+
+
+
+*********************************************************************************/
+
+GRANT SELECT ON ACCOUNT_BALANCE TO BKS_USER;
+

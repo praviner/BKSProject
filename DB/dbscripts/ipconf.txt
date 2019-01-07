@@ -1,0 +1,40 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   ipconf.txt  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/ipconf.txt-arc   1.0   Jan 19 2018 15:02:56   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+create table  TRANSFERRED_CABLE_CALL (
+  CALL_TRANSFER_ID        VARCHAR2(16)    not null,
+  SERVICE_LINE            VARCHAR2(10)    not null,
+  ANI                     VARCHAR2(20)    not null,
+  CLIR                    VARCHAR2(1)    not null,
+  GENESYS_CALL_ID	        VARCHAR2(255)    not null,
+  CREATION_DATE	          DATE	          not null,
+  CREATED_BY              VARCHAR2(50)    not null,
+  ROUTING_TRANSFER_DEST	  VARCHAR2(50)    not null,
+  ATTRIBUTES_1            VARCHAR2(4000)     null,
+  ATTRIBUTES_2            VARCHAR2(4000)     null,
+  ATTRIBUTES_3            VARCHAR2(4000)     null,
+  RETRIEVED_SYSTEM_IDENT	VARCHAR2(50)       not null,
+  RECORD_RETRIEVED_IND    VARCHAR2(1)       not null,
+  LAST_UPDATE_DATE        DATE	            not null,
+  LAST_UPDATED_BY         VARCHAR2(50)      not null
+);
+
+
+create table  DNIS_LOAD (
+  DNIS                    VARCHAR2(10)    not null,
+  LOAD_IDENT              INTEGER         not null,
+  LAST_UPDATE_DATE        DATE	            not null,
+  UPDATED_BY              VARCHAR2(255)      not null
+);

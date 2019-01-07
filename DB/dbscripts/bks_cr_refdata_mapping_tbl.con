@@ -1,0 +1,26 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_refdata_mapping_tbl.con  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_refdata_mapping_tbl.con-arc   1.1   Dec 19 2007 11:40:06   huptasch  $ 
+-- Revision		:  $Revision:   1.1  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Reference data for BKS customer data mapping
+--
+--
+--#########################################################################
+*/
+
+ALTER TABLE BKS_REFDATA_MAPPING
+  ADD CONSTRAINT BKS_RD_MAPPING_PK PRIMARY KEY (
+   RDS_ID,
+   VALID_FROM,
+   VALID_UNTIL
+  )
+  USING INDEX
+  &&ONL_CCM_SMALL_IDX;

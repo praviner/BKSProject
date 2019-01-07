@@ -1,0 +1,21 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_transaction_log_tbl_1.tab  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_transaction_log_tbl_1.tab-arc   1.0   Dec 09 2011 14:12:00   makuier  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+ALTER TABLE BKS_TRANSACTION_LOG ADD (SORT_KEY		VARCHAR2(20)		null);
+ALTER TABLE BKS_TRANSACTION_LOG ADD (ERROR_TYPE		VARCHAR2(20)		null);   
+ALTER TABLE BKS_TRANSACTION_LOG ADD (ERROR_INFO		VARCHAR2(20)		null);
+ALTER TABLE BKS_TRANSACTION_LOG ADD (VALUE1			VARCHAR2(100)		null);
+ALTER TABLE BKS_TRANSACTION_LOG ADD (VALUE2			VARCHAR2(100)		null);
+ALTER TABLE BKS_TRANSACTION_LOG ADD (VALUE3			VARCHAR2(100)		null);

@@ -1,0 +1,17 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_refdata_mapping_tbl.ugr  $ 
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_refdata_mapping_tbl.ugr-arc   1.0   Dec 04 2007 16:22:14   huptasch  $ 
+-- Revision     :  $Revision:   1.0  $
+-- 
+-- -----------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+grant select on BKS_REFDATA_MAPPING to R_BKS_RO;
+

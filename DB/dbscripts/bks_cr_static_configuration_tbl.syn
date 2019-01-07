@@ -1,0 +1,19 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   upd_crd_cross_reference_group_14.sql  $ 
+-- Header		:  $Header:   /opt/pvcs/archives/ccb/db_data/upd_crd_cross_reference_group_14.sqv   1.0   31 Oct 2006 13:46:50   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Reference data for BKS customer data mapping
+--
+--
+--#########################################################################*/
+
+create public synonym BKS_STATIC_CONFIGURATION for BKS_STATIC_CONFIGURATION;
+ 

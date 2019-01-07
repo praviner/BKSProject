@@ -1,0 +1,34 @@
+/*
+--#########################################################################
+--
+-- Script name: $Workfile $ 
+-- Header     : $Header $ 
+-- Revision   : $Revision $ 
+--
+---------------------------------------------------------------------------
+--
+-- Description
+-- IT-24075 "Umstellung WOE auf AAW-Architektur"
+--
+-- Add NutzungsmodellIPTV
+-- SPN-BKS-000081130
+--
+--#########################################################################*/
+
+delete from bks_static_configuration
+where value_id like '%;IPTV';
+
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('COMMISSIONING_INFORMATION;CIO_DATA;IPTV', '.Bestand.Auftragsposition.IPTV.NutzungsmodellIPTV.VONummer', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('02.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('P_CONTRACT;P_MIN_PERIOD;IPTV', '.Bestand.Auftragsposition.IPTV.NutzungsmodellIPTV.MVLZ', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('P_CONTRACT;P_TERM_END_DATE;IPTV', '.Bestand.Auftragsposition.IPTV.NutzungsmodellIPTV.LaufzeitEndeDatum', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('P_CONTRACT;TERM_START_DATE;IPTV', '.Bestand.Auftragsposition.IPTV.NutzungsmodellIPTV.MindestvertragslaufzeitBeginn', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('P_PRODUCT_COMMITMENT;P_MIN_PERIOD;IPTV', '.Bestand.Auftragsposition.IPTV.NutzungsmodellIPTV.MVLZ', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('P_PRODUCT_COMMITMENT;P_TERM_END_DATE;IPTV', '.Bestand.Auftragsposition.IPTV.NutzungsmodellIPTV.LaufzeitEndeDatum', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('P_PRODUCT_COMMITMENT;TERM_START_DATE;IPTV', '.Bestand.Auftragsposition.IPTV.NutzungsmodellIPTV.MindestvertragslaufzeitBeginn', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));

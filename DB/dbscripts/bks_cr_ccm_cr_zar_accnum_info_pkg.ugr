@@ -1,0 +1,25 @@
+/*
+--#########################################################################
+--
+-- Script Name          :  $Workfile:   bks_cr_ccm_cr_zar_accnum_info_pkg.ugr  $ 
+-- Header               :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_ccm_cr_zar_accnum_info_pkg.ugr-arc   1.0   Mar 05 2014 11:36:40   makuier  $ 
+-- Revision             :  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+--
+-- ONL
+-- BKS_DB
+--
+-- Modification History :  $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_ccm_cr_zar_accnum_info_pkg.ugr-arc  $
+--
+--   Rev 1.0   Mar 05 2014 11:36:40   makuier
+--Initial revision.
+--
+--
+--
+--#########################################################################*/
+GRANT EXECUTE ON ZAR_ACCNUM_INFO TO BKS_USER;

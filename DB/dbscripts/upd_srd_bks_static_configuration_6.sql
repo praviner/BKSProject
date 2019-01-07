@@ -1,0 +1,34 @@
+/*
+--#########################################################################
+--
+-- Script name: $Workfile $ 
+-- Header     : $Header $ 
+-- Revision   : $Revision $ 
+--
+---------------------------------------------------------------------------
+--
+-- Description
+-- IT-24075 "Umstellung WOE auf AAW-Architektur"
+--
+--#########################################################################*/
+
+delete from BKS_STATIC_CONFIGURATION
+where VALUE_ID like '%JuristischePerson'
+or VALUE_ID like '%NatuerlichePerson';
+
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('CUSTOMER;CATEGORY_RD;JuristischePerson', '.Bestand.Auftraggeber.Kundenkategorie', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('CUSTOMER;CLASSIFICATION_RD;JuristischePerson', '.Bestand.Auftraggeber.Kundenklasse', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('CUSTOMER;CUSTOMER_NUMBER;JuristischePerson', '.Bestand.Auftraggeber.Kundennummer', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('CUSTOMER;P_SERVICE_PROVIDER_CODE;JuristischePerson', '.Bestand.Auftraggeber.ServiceProviderInfo.ServiceProviderCode', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('CUSTOMER;CATEGORY_RD;NatuerlichePerson', '.Bestand.Auftraggeber.Kundenkategorie', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('CUSTOMER;CLASSIFICATION_RD;NatuerlichePerson', '.Bestand.Auftraggeber.Kundenklasse', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('CUSTOMER;CUSTOMER_NUMBER;NatuerlichePerson', '.Bestand.Auftraggeber.Kundennummer', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));
+INSERT INTO BKS_STATIC_CONFIGURATION (VALUE_ID, TARGET_ATTRIBUTE_PATH, VALID_FROM, VALID_UNTIL)
+    VALUES ('CUSTOMER;P_SERVICE_PROVIDER_CODE;NatuerlichePerson', '.Bestand.Auftraggeber.ServiceProviderInfo.ServiceProviderCode', TO_DATE ('01.01.1979 00:00:00', 'DD.MM.YYYY HH24:MI:SS'), TO_DATE ('01.01.3000 00:00:00', 'DD.MM.YYYY HH24:MI:SS'));

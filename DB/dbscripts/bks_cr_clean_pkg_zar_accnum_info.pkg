@@ -1,0 +1,23 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_ccb_som_mapping_tbl.con  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_ccb_som_mapping_tbl.con-arc   1.1   Oct 28 2009 18:04:12   makuier  $ 
+-- Revision		:  $Revision:   1.1  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+BEGIN
+   EXECUTE IMMEDIATE 'DROP PACKAGE ZAR_ACCNUM_INFO';
+EXCEPTION
+   WHEN OTHERS THEN
+      IF SQLCODE != -4043 THEN
+         RAISE;
+      END IF;
+END;/

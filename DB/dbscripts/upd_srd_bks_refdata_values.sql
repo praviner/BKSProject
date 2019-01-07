@@ -1,0 +1,196 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   upd_srd_bks_refdata_values.sql  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/upd_srd_bks_refdata_values.sql-arc   1.0   Nov 28 2007 10:07:04   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Reference data for BKS customer data mapping
+--
+--
+--#########################################################################*/
+
+alter session set nls_date_format = 'DD.MM.YYYY';
+
+delete from BKS_REFDATA_VALUES;
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketPreis', 'PRODUCT_CODE_VOICE', 'P_PRODUCT_COMMITMENT;PRODUCT_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketPreis', 'PRICING_STRUCTURE_CODE_VOICE', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketPreis', 'SERVICE_CODE_VOICE', 'ServiceCodeVoice', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketPreis', 'PRODUCT_CODE_ONLINE', 'P_PRODUCT_COMMITMENT;PRODUCT_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketPreis', 'PRICING_STRUCTURE_CODE_ONLINE', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketPreis', 'SERVICE_CODE_DSL', 'ServiceCodeBandwidth', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketPreis', 'KONDITION', 'ActionOffer', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketName', 'PRODUCT_CODE_VOICE', 'P_PRODUCT_COMMITMENT;PRODUCT_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketName', 'PRICING_STRUCTURE_CODE_VOICE', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketName', 'SERVICE_CODE_VOICE', 'ServiceCodeVoice', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketName', 'PRODUCT_CODE_ONLINE', 'P_PRODUCT_COMMITMENT;PRODUCT_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketName', 'PRICING_STRUCTURE_CODE_ONLINE', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketName', 'SERVICE_CODE_DSL', 'ServiceCodeBandwidth', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketName', 'KONDITION', 'ActionOffer', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketID', 'PRODUCT_CODE_VOICE', 'P_PRODUCT_COMMITMENT;PRODUCT_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketID', 'PRICING_STRUCTURE_CODE_VOICE', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketID', 'SERVICE_CODE_VOICE', 'ServiceCodeVoice', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketID', 'PRODUCT_CODE_ONLINE', 'P_PRODUCT_COMMITMENT;PRODUCT_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketID', 'PRICING_STRUCTURE_CODE_ONLINE', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketID', 'SERVICE_CODE_DSL', 'ServiceCodeBandwidth', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PaketID', 'KONDITION', 'ActionOffer', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PreisStrukturNameSprache', 'Pricing_Structure_Code', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'PreisStrukturNameInternet', 'Pricing_Structure_Code', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'ProfilSprache', 'Product_Code', 'P_PRODUCT_COMMITMENT;PRODUCT_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'ProfilSprache', 'Product_Version_Code', 'P_PRODUCT_COMMITMENT;PRODUCT_VERSION_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'ProfilSprache', 'Pricing_Structure_Code', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'ProfilInternet', 'Product_Code', 'P_PRODUCT_COMMITMENT;PRODUCT_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'ProfilInternet', 'Product_Version_Code', 'P_PRODUCT_COMMITMENT;PRODUCT_VERSION_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'ProfilInternet', 'Pricing_Structure_Code', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'TarifnameSprache', 'Product_Code', 'P_PRODUCT_COMMITMENT;PRODUCT_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'TarifnameSprache', 'Product_Version_Code', 'P_PRODUCT_COMMITMENT;PRODUCT_VERSION_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'TarifnameSprache', 'Pricing_Structure_Code', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Sprache', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'TarifnameInternet', 'Product_Code', 'P_PRODUCT_COMMITMENT;PRODUCT_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'TarifnameInternet', 'Product_Version_Code', 'P_PRODUCT_COMMITMENT;PRODUCT_VERSION_CODE;Internet', '01.01.1979', '01.01.3000' );
+
+insert into BKS_REFDATA_VALUES
+( RDS_ID, RDS_KEY, SOURCE_VALUE_ID, VALID_FROM, VALID_UNTIL )
+values
+( 'TarifnameInternet', 'Pricing_Structure_Code', 'P_PRODUCT_COMMITMENT;PRICING_STRUCTURE_CODE;Internet', '01.01.1979', '01.01.3000' );
+

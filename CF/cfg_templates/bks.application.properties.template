@@ -1,0 +1,709 @@
+#START PARAMETER
+#Parameter:         bksservicebus.transport.ServiceBusRequestQueue.QueueName
+#ValidFrom:         BKS-API-23
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       A valid queue name
+#DefaultValue:      -
+#ExampleValue:      AAW.BKS.SBUSOUT
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.08.07
+#Last_Modified_By   makuier
+#Description:       The name of the queue to connect to for requests coming from ServiceBus.
+#END PARAMETER
+    
+    
+#START PARAMETER
+#Parameter:         bksservicebus.transport.ServiceBusReplyQueue.QueueName
+#ValidFrom:         BKS-API-23
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       A valid queue name
+#DefaultValue:      -
+#ExampleValue:      AAW.BKS.SBUSIN
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.08.07
+#Last_Modified_By   makuier
+#Description:       The name of the queue to connect to for replies to ServiceBus.
+#END PARAMETER
+mcf.queue.out=${bksservicebus.transport.ServiceBusReplyQueue.QueueName}
+
+mcf.queue.in=${bksservicebus.transport.ServiceBusRequestQueue.QueueName}
+
+mcf.queue.listen=${bksservicebus.transport.ServiceBusRequestQueue.QueueName}
+
+mcf.queue.response=${bksservicebus.transport.ServiceBusReplyQueue.QueueName}
+
+
+# Queue des Delay-Services
+#mcf.queue.delay=AAW.DELAY.SBUSIN
+mcf.queue.delay=
+
+
+#
+# Timings ----------
+#
+
+# Wartezeit vor Retry (in Millisekunden)
+mcf.delay.retry=5000
+
+# Default-Receiver-Timeout für synchrone Anfragen (in Millisekunden)
+mcf.default.receive.timeout=30000
+
+
+#
+# Backout ----------
+#
+ 
+#START PARAMETER
+#Parameter:         bksservicebus.transport.backout.threshold
+#ValidFrom:         BKS-API-38
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       a positive integer
+#DefaultValue:      -
+#ExampleValue:      5
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     01.04.11
+#Last_Modified_By   makuier
+#Description:       Maximum number of retries 
+#END PARAMETER
+mcf.backout.threshold=${bksservicebus.transport.backout.threshold}
+
+#START PARAMETER
+#Parameter:         bksservicebus.transport.backout.dir
+#ValidFrom:         BKS-API-38
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       a valid directory path
+#DefaultValue:      -
+#ExampleValue:      ...../backoutDir
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     01.04.11
+#Last_Modified_By   makuier
+#Description:       Back out directory
+#END PARAMETER
+mcf.backout.dir=${bksservicebus.transport.backout.dir}
+
+
+#START PARAMETER
+#Parameter:         bksservicebus.transport.QueueManagerName
+#ValidFrom:         BKS-API-23
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       A valid queue manager name
+#DefaultValue:      -
+#ExampleValue:      CCBSVR2E
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.08.07
+#Last_Modified_By   makuier
+#Description:       The name of the queue manager to connect to for requests coming from ServiceBus.
+#END PARAMETER
+mcf.queue.manager=${bksservicebus.transport.QueueManagerName}
+    
+    
+#START PARAMETER
+#Parameter:         bksservicebus.transport.QueueManagerHostName
+#ValidFrom:         BKS-API-23
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       A valid queue manager host name
+#DefaultValue:      -
+#ExampleValue:      hp64d01
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.08.07
+#Last_Modified_By   makuier
+#Description:       The host name of the queue manager to connect to for requests coming from ServiceBus.
+#END PARAMETER
+mcf.queue.host=${bksservicebus.transport.QueueManagerHostName}
+    
+    
+#START PARAMETER
+#Parameter:         bksservicebus.transport.QueueManagerPortNumber
+#ValidFrom:         BKS-API-23
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       A valid queue manager port number
+#DefaultValue:      -
+#ExampleValue:      5012
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.08.07
+#Last_Modified_By   makuier
+#Description:       The port number of the queue manager to connect to for requests coming from ServiceBus.
+#END PARAMETER
+mcf.queue.port=${bksservicebus.transport.QueueManagerPortNumber}
+
+
+
+#START PARAMETER
+#Parameter:         bksservicebus.transport.ConcurrentConsumers
+#ValidFrom:         BKS-API-26
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       any positive integer
+#DefaultValue:      -
+#ExampleValue:      1
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     15.04.08
+#Last_Modified_By   makuier
+#Description:       Number of concurrent threads consuming the messages. 
+#END PARAMETER
+ConcurrentConsumers=${bksservicebus.transport.ConcurrentConsumers}
+
+#START PARAMETER
+#Parameter:         bks.db.effonl.Driver
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Class name
+#DefaultValue:      -
+#ExampleValue:      oracle.jdbc.driver.OracleDriver
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The name of the JDBC database driver to use.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.EncryptionKey
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Encryption key used to encrypt the password.
+#DefaultValue:      -
+#ExampleValue:      pshsodoehseffjlhsohedqfpnpfssmpleggfqpprnlhjhess
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The encryption key that was used to encrypt the database password.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.refdata.ConnectString
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Fully qualified URL for JDBC
+#DefaultValue:      -
+#ExampleValue:      jdbc:oracle:thin:@hpdbvb01:1535:ccmdev
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The connection string to use to connect to the database.
+#Description:       (Format: jdbc:oracle:thin:@hostname:port:dbname)
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.refdata.User
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       All users of database.
+#DefaultValue:      -
+#ExampleValue:      ccm_user
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The user name to use to connect to the database.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.refdata.Password
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Valid password.
+#DefaultValue:      -
+#ExampleValue:      ernirnlihlrieppg
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The ecnrypted password to use to connect to the database (encrypted in CCB format).
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.effonl.ConnectString
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Fully qualified URL for JDBC
+#DefaultValue:      -
+#ExampleValue:      jdbc:oracle:thin:@hpdbvb01:1535:ccmdev
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The connection string to use to connect to the database.
+#Description:       (Format: jdbc:oracle:thin:@hostname:port:dbname)
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.effonl.User
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       All users of database.
+#DefaultValue:      -
+#ExampleValue:      ccm_user
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The user name to use to connect to the database.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.effonl.Password
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Valid password.
+#DefaultValue:      -
+#ExampleValue:      ernirnlihlrieppg
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The ecnrypted password to use to connect to the database (encrypted in CCB format).
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.onl.ConnectString
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Fully qualified URL for JDBC
+#DefaultValue:      -
+#ExampleValue:      jdbc:oracle:thin:@hpdbvb01:1535:ccmdev
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The connection string to use to connect to the database.
+#Description:       (Format: jdbc:oracle:thin:@hostname:port:dbname)
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.onl.User
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       All users of database.
+#DefaultValue:      -
+#ExampleValue:      ccm_user
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The user name to use to connect to the database.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.onl.Password
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Valid password.
+#DefaultValue:      -
+#ExampleValue:      ernirnlihlrieppg
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The ecnrypted password to use to connect to the database (encrypted in CCB format).
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.db.SqlMapConfig
+#ValidFrom:         BKS-API-24
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       path to the configuration file.
+#DefaultValue:      -
+#ExampleValue:      etc/sqlMapConfig.xml
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     27.01.04
+#Last_Modified_By   makuier
+#Description:       The location of ibatis SQL map configuration file.
+#END PARAMETER
+Driver=${bks.db.Driver}
+EncryptionKey=${bks.db.EncryptionKey}
+refdata.ConnectString=${bks.db.refdata.ConnectString}
+refdata.User=${bks.db.refdata.User}
+refdata.Password=${bks.db.refdata.Password}
+effonl.ConnectString=${bks.db.effonl.ConnectString}
+effonl.User=${bks.db.effonl.User}
+effonl.Password=${bks.db.effonl.Password}
+onl.ConnectString=${bks.db.onl.ConnectString}
+onl.User=${bks.db.onl.User}
+onl.Password=${bks.db.onl.Password}
+SqlMapConfig=${bks.db.SqlMapConfig}
+
+#START PARAMETER
+#Parameter:         bksservicebus.transport.ReplyQueue
+#ValidFrom:         BKS-API-25
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       A valid queue manager + queue name
+#DefaultValue:      -
+#ExampleValue:      queue://SBUSQM25T/AAW.BKS.SBUSOUT
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     02.08.07
+#Last_Modified_By   makuier
+#Description:       The reply queue
+#END PARAMETER
+    
+#START PARAMETER
+#Parameter:         bks.applicationContext-mcf-rdsClient-configTimeOut
+#ValidFrom:         BKS-API-26
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Any positive integer
+#DefaultValue:      -
+#ExampleValue:      20000
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     22.04.08
+#Last_Modified_By   makuier
+#Description:       The queue time out in ms.
+#END PARAMETER
+rdsClient.configTimeOut=${bks.applicationContext-mcf-rdsClient-configTimeOut}
+rdsClient.ReplyQueue=${bksservicebus.transport.ReplyQueue}
+
+
+#START PARAMETER
+#Parameter:         rds.sourceDir
+#ValidFrom:         BKS-API-28
+#ValidTo:             open
+#Components:     BKS
+#ParameterType: STRING
+#ValidValues:      A valid directory for the source local database
+#DefaultValue:      -
+#ExampleValue:    .../SourceDir
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     22.08.08
+#Last_Modified_By   makuier
+#Description:       Source directory
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         rds.targetDir
+#ValidFrom:         BKS-API-28
+#ValidTo:             open
+#Components:     BKS
+#ParameterType: STRING
+#ValidValues:      A valid directory for the target local database
+#DefaultValue:      -
+#ExampleValue:    .../TargetDir
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     22.08.08
+#Last_Modified_By   makuier
+#Description:       Target directory
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:        updateOnStartup
+#ValidFrom:         BKS-API-28
+#ValidTo:             open
+#Components:     BKS
+#ParameterType: STRING
+#ValidValues:      true/false
+#DefaultValue:      -
+#ExampleValue:    true
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     22.08.08
+#Last_Modified_By   makuier
+#Description:       Whether to update the local database at startup.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:        clearCacheOnStartup
+#ValidFrom:         BKS-API-31
+#ValidTo:             open
+#Components:     BKS
+#ParameterType: STRING
+#ValidValues:      true/false
+#DefaultValue:      -
+#ExampleValue:    true
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     22.08.08
+#Last_Modified_By   makuier
+#Description:       Whether to clear the refdata cache at start up or not.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:        multiUpdate
+#ValidFrom:         BKS-API-31
+#ValidTo:             open
+#Components:     BKS
+#ParameterType: STRING
+#ValidValues:      true/false
+#DefaultValue:      -
+#ExampleValue:    false
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     22.08.08
+#Last_Modified_By   makuier
+#Description:       Set it to false. Place holder is for possible future use.
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         rds.versionDir
+#ValidFrom:         BKS-API-28
+#ValidTo:             open
+#Components:     BKS
+#ParameterType: STRING
+#ValidValues:      A directory conationg version.xml
+#DefaultValue:      -
+#ExampleValue:    ...../VersionDir
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     22.08.08
+#Last_Modified_By   makuier
+#Description:       A directory conationg version.xml
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bksservicebus.transport.CronExpression
+#ValidFrom:         BKS-API-26
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       The trigger time for reference data refresh 
+#DefaultValue:      -
+#ExampleValue:      1
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     15.04.08
+#Last_Modified_By   makuier
+#Description:       For detailed description see 
+#Description:       http://quartz.sourceforge.net/javadoc/org/quartz/CronTrigger.html
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         rds.ehCacheFile
+#ValidFrom:         BKS-API-26
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       the location of the cache file
+#DefaultValue:      -
+#ExampleValue:      ...../rdsClient-ehcache
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     15.04.08
+#Last_Modified_By   makuier
+#Description:       -
+#END PARAMETER
+
+rds.sourceDir=${rds.sourceDir}
+rds.targetDir=${rds.targetDir}
+rds.updateOnStartup=${rds.updateOnStartup}
+rds.clearCacheOnStartup=${rds.clearCacheOnStartup}
+rds.multiUpdate=${rds.multiUpdate}
+rds.versionDir=${rds.versionDir}
+rds.cronExpression=${bksservicebus.transport.CronExpression}
+rds.ehCacheFile=${rds.ehCacheFile}
+
+# START PARAMETER
+#	Parameter:  		rds.mcf.timeToLive
+#	ValidFrom:        	
+#	ValidTo:       		open
+#	Components:        	
+#	ParameterType:     	LONG
+#	ValidValues:       	N/N
+#	DefaultValue:      	-
+#	ExampleValue:      	72000
+#	RecomnendedVal.:   	-
+#	Optional:      		N
+#	Last_Modified: 		27.04.2009
+#	Last_Modified_By	Phuong Ha
+#	Description:		Lebenszeit fuer Nachrichten vom RDS-Client an den Server
+# END PARAMETER
+rds.mcf.timeToLive=${rds.mcf.timeToLive}
+
+# START PARAMETER
+#	Parameter:  		rds.mcf.msgPriority
+#	ValidFrom:        	
+#	ValidTo:       		open
+#	Components:        	
+#	ParameterType:     	INT
+#	ValidValues:       	N/N
+#	DefaultValue:      	-
+#	ExampleValue:      	1
+#	RecomnendedVal.:   	-
+#	Optional:      		N
+#	Last_Modified: 		27.04.2009
+#	Last_Modified_By	Phuong Ha
+#	Description:		Priority fuer RDS-Nachrichten
+# END PARAMETER
+rds.mcf.msgPriority=${rds.mcf.msgPriority}
+
+
+########Ams database prperties##################
+# START PARAMETER
+# Parameter:  		rds.ams.url
+# ValidFrom:        	
+# ValidTo:       		open
+# Components:        	
+# ParameterType:     	STRING
+# ValidValues:       	N/N
+# DefaultValue:      	-
+# ExampleValue:      	jdbc:oracle:thin:@pkgdbc04.vfeds.com:1609:META2ENT
+# RecomnendedVal.:   	-
+# Optional:      		N
+# Last_Modified: 		06.12.2009
+# Last_Modified_By	Hamed Farid
+# Description:		The URL of the Ams database should be specified before the starting the application.
+# END PARAMETER
+
+rds.ams.url=${rds.ams.url}
+
+# START PARAMETER
+# Parameter:  		rds.ams.user
+# ValidFrom:        	
+# ValidTo:       		open
+# Components:        	
+# ParameterType:     	STRING
+# ValidValues:       	N/N
+# DefaultValue:      	-
+# ExampleValue:      	METRA5
+# RecomnendedVal.:   	-
+# Optional:      		N
+# Last_Modified: 		06.12.2009
+# Last_Modified_By	Hamed Farid
+# Description:		The user name of the Ams database should be specified before the starting the application.. 
+# END PARAMETER
+
+
+rds.ams.user=${rds.ams.user}
+
+# START PARAMETER
+# Parameter:  		rds.ams.password
+# ValidFrom:        	
+# ValidTo:       		open
+# Components:        	
+# ParameterType:     	STRING
+# ValidValues:       	N/N
+# DefaultValue:      	-
+# ExampleValue:      	test
+# RecomnendedVal.:   	-
+# Optional:      		N
+# Last_Modified: 		06.12.2009
+# Last_Modified_By	Hamed Farid
+# Description:		The password of the Ams database should be specified before the starting the application.. 
+# END PARAMETER
+
+
+rds.ams.password=${rds.ams.password}
+
+
+# START PARAMETER
+#     Parameter:              performance.request.systemId
+#     ValidFrom:              
+#     ValidTo:                open
+#     Components:             
+#     ParameterType:          STRING
+#     ValidValues:            N/N
+#     DefaultValue:           -
+#     ExampleValue:           PKAT
+#     RecomnendedVal.:        -
+#     Optional:               N
+#     Last_Modified:          
+#     Last_Modified_By  
+#     Description:            eindeutige Kennung der Komponente
+# END PARAMETER
+perf.request.systemId=${performance.request.systemId}
+
+# START PARAMETER
+#     Parameter:              performance.request.computerId
+#     ValidFrom:              
+#     ValidTo:                open
+#     Components:             
+#     ParameterType:          STRING
+#     ValidValues:            N/N
+#     DefaultValue:           -
+#     ExampleValue:           gamep02
+#     RecomnendedVal.:        -
+#     Optional:               N
+#     Last_Modified:          
+#     Last_Modified_By  
+#     Description:            current host name resp. ressource group name
+# END PARAMETER
+perf.request.computerId=${performance.request.computerId}
+
+# START PARAMETER
+#     Parameter:              performance.request.instanceId
+#     ValidFrom:              
+#     ValidTo:                open
+#     Components:             
+#     ParameterType:          STRING
+#     ValidValues:            N/N
+#     DefaultValue:           -
+#     ExampleValue:           ANF21
+#     RecomnendedVal.:        -
+#     Optional:               N
+#     Last_Modified:          
+#     Last_Modified_By  
+#     Description:            eine eindeutige Kennung der Tomcat-Instanz
+# END PARAMETER
+perf.request.instanceId=${performance.request.instanceId}
+
+# START PARAMETER
+#     Parameter:              performance.request.delimiter
+#     ValidFrom:              
+#     ValidTo:                open
+#     Components:             
+#     ParameterType:          STRING
+#     ValidValues:            N/N
+#     DefaultValue:           -
+#     ExampleValue:           _
+#     RecomnendedVal.:        -
+#     Optional:               N
+#     Last_Modified:          
+#     Last_Modified_By  
+#     Description:            (underscore)
+# END PARAMETER
+perf.request.delimiter=${performance.request.delimiter}
+

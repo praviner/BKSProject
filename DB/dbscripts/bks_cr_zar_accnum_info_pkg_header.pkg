@@ -1,0 +1,25 @@
+CREATE OR REPLACE PACKAGE ZAR_ACCNUM_INFO AS
+
+  c_system       CONSTANT VARCHAR2 (50) := 'ZAR';
+
+  PROCEDURE CCM_GET_ZAR_ACCNUM_INFO (
+      i_customer_number                 IN       VARCHAR2,
+      i_ONKZ                            IN       VARCHAR2,
+      i_access_number                 IN       VARCHAR2,
+	  o_ONKZ                  OUT      VARCHAR2,
+     o_access_number_start     OUT      VARCHAR2,
+	  o_access_number_end       OUT      VARCHAR2,
+      o_product_code          OUT      VARCHAR2,
+	  o_physical_status       OUT      integer,
+      o_logical_status        OUT      integer,
+          o_tnb                   OUT      VARCHAR2,
+      o_future_tnb            OUT      VARCHAR2,
+	  o_desired_date          OUT      VARCHAR2,
+      o_customer_number       OUT      VARCHAR2,
+	  o_access_id             OUT      VARCHAR2,
+      o_error_code            OUT      integer,
+	  o_error_text            OUT      VARCHAR2,
+      o_paired_status_indicator OUT      VARCHAR2,
+	  o_pending_correction_indicator  OUT      VARCHAR2);
+  END ZAR_ACCNUM_INFO;
+/

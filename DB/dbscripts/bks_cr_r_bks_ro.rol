@@ -1,0 +1,21 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_r_bks_ro.rol  $ 
+-- Header		:  $Header:   /opt/pvcs/archives/ccb/db_data/upd_crd_cross_reference_group_14.sqv   1.0   31 Oct 2006 13:46:50   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Role for BKS users
+--
+-- History      :  $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_usr_bks_owner_onl.ugr-arc  $
+--
+--
+--#########################################################################*/
+
+create role R_BKS_RO;
+

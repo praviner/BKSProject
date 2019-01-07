@@ -1,0 +1,99 @@
+/*
+-- #######################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_usr_bks_owner_effonl.ugr  $ 
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_usr_bks_owner_effonl.ugr-arc   1.2   Dec 06 2007 15:19:10   huptasch  $ 
+-- Revision     :  $Revision:   1.2  $
+-- 
+-- -----------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT18232 - D2 service providing
+--     
+-- History      :  $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_usr_bks_owner_effonl.ugr-arc  $
+--
+--   Rev 1.2   Dec 06 2007 15:19:10   huptasch
+--SPN-BKS-000064601 (Installation problems)
+--
+--   Rev 1.1   Dec 04 2007 16:20:16   huptasch
+--Fixed installation problems
+--
+--   Rev 1.0   Nov 12 2007 17:44:24   huptasch
+--Initial revision.
+--
+--
+-- #######################################################################
+*/
+@ConfigEnvSpecifics.sql
+
+CREATE USER BKS_OWNER
+IDENTIFIED BY BKS_OWNER
+DEFAULT &&EFFONL_BKS_DEFAULT_TABLESPACE
+TEMPORARY  &&EFFONL_BKS_TEMP_TABLESPACE
+QUOTA UNLIMITED on &&BKS_OWNER_EFFONL_DEFAULT_TS;
+
+GRANT CREATE SESSION, ALTER SESSION TO BKS_OWNER;
+GRANT CREATE TABLE, CREATE VIEW, CREATE PUBLIC SYNONYM, CREATE PROCEDURE,
+      CREATE ANY TRIGGER, CREATE SEQUENCE, CREATE ROLE TO BKS_OWNER;
+
+grant select on MAIN_USER.ACCESS_INFORMATION to BKS_OWNER;
+grant select on MAIN_USER.ACCESS_NUMBER to BKS_OWNER;
+grant select on MAIN_USER.ACCOUNT to BKS_OWNER;
+grant select on MAIN_USER.ADDRESS to BKS_OWNER;
+grant select on MAIN_USER.AFFINITY_GROUP to BKS_OWNER;
+grant select on MAIN_USER.ARCOR_CONTACT_DATA to BKS_OWNER;
+grant select on MAIN_USER.ARCOR_CONTACT_RULE to BKS_OWNER;
+grant select on MAIN_USER.BANK_ACCOUNT to BKS_OWNER;
+grant select on MAIN_USER.BUNDLE to BKS_OWNER;
+grant select on MAIN_USER.BUNDLE_ITEM to BKS_OWNER;
+grant select on MAIN_USER.BUNDLE_MIGRATION_LOG to BKS_OWNER;
+grant select on MAIN_USER.COMMISSIONING_INFORMATION to BKS_OWNER;
+grant select on MAIN_USER.CONFIGURED_VALUE to BKS_OWNER;
+grant select on MAIN_USER.CONFIG_SERVICE_CHARACTERISTIC to BKS_OWNER;
+grant select on MAIN_USER.CONTACT to BKS_OWNER;
+grant select on MAIN_USER.CONTACT_ROLE to BKS_OWNER;
+grant select on MAIN_USER.CONTRACT_CUSTOMER to BKS_OWNER;
+grant select on MAIN_USER.CONTRACT_PREDEFINED_LEGAL to BKS_OWNER;
+grant select on MAIN_USER.CONTRIBUTING_ITEM to BKS_OWNER;
+grant select on MAIN_USER.CREDIT_CARD to BKS_OWNER;
+grant select on MAIN_USER.CROSS_REFERENCE_ITEM to BKS_OWNER;
+grant select on MAIN_USER.CSECOMMENT to BKS_OWNER;
+grant select on MAIN_USER.CUSTOMER to BKS_OWNER;
+grant select on MAIN_USER.CUSTOMER_DECRYPT to BKS_OWNER;
+grant select on MAIN_USER.CUSTOMER_ORDER to BKS_OWNER;
+grant select on MAIN_USER.CUSTOMER_ORDER_DEPENDENCY to BKS_OWNER;
+grant select on MAIN_USER.CUSTOM_LEGAL_CONDITION to BKS_OWNER;
+grant select on MAIN_USER.DOCUMENT_PATTERN to BKS_OWNER;
+grant select on MAIN_USER.DOCUMENT_RECIPIENT to BKS_OWNER;
+grant select on MAIN_USER.ENTITY to BKS_OWNER;
+grant select on MAIN_USER.GENERAL_CODE_ITEM to BKS_OWNER;
+grant select on MAIN_USER.GUIDING_RULE to BKS_OWNER;
+grant select on MAIN_USER.MAILING to BKS_OWNER;
+grant select on MAIN_USER.ORDER_FORM to BKS_OWNER;
+grant select on MAIN_USER.ORDER_FORM_PRODUCT_COMMIT to BKS_OWNER;
+grant select on MAIN_USER.PARAMETER_ITEM to BKS_OWNER;
+grant select on MAIN_USER.PASSWORD to BKS_OWNER;
+grant select on MAIN_USER.PREDEFINED_LEGAL_CONDITION to BKS_OWNER;
+grant select on MAIN_USER.PRICE_PLAN_SUBSCRIPTION to BKS_OWNER;
+grant select on MAIN_USER.PRINCIPAL to BKS_OWNER;
+grant select on MAIN_USER.PRINCIPAL_ASSOCIATE to BKS_OWNER;
+grant select on MAIN_USER.PRODUCT_SERVICE_RULE to BKS_OWNER;
+grant select on MAIN_USER.PRODUCT_SUBSCRIPTION to BKS_OWNER;
+grant select on MAIN_USER.PRODUCT_SUBSCRIPTION_GROUP to BKS_OWNER;
+grant select on MAIN_USER.SAP_DUNNING to BKS_OWNER;
+grant select on MAIN_USER.SAP_DUNNING_PROCESSING to BKS_OWNER;
+grant select on MAIN_USER.SAP_DUNNING_STATISTIC to BKS_OWNER;
+grant select on MAIN_USER.SECURITY_PROFILE to BKS_OWNER;
+grant select on MAIN_USER.SELECTED_DESTINATION to BKS_OWNER;
+grant select on MAIN_USER.SERVICE_DELIVERY_CONTRACT to BKS_OWNER;
+grant select on MAIN_USER.SERVICE_LOCATION to BKS_OWNER;
+grant select on MAIN_USER.SERVICE_SUBSCRIPTION to BKS_OWNER;
+grant select on MAIN_USER.SERVICE_SUBSCRIPTION_DEP to BKS_OWNER;
+grant select on MAIN_USER.SERVICE_TICKET_POSITION to BKS_OWNER;
+grant select on MAIN_USER.SERVICE_TICKET_POSITION_DEP to BKS_OWNER;
+grant select on MAIN_USER.SERV_DELIV_CONT_PRODUCT_COMMIT to BKS_OWNER;
+grant select on MAIN_USER.SERV_SUBSCR_PRICE_PLAN_SUBSCR to BKS_OWNER;
+grant select on MAIN_USER.SKELETON_CONTRACT to BKS_OWNER;
+grant select on MAIN_USER.SKELETON_CONTRACT_PROD_COMMIT to BKS_OWNER;
+/

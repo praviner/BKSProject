@@ -1,0 +1,26 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_refdata_values_tbl.con  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_refdata_values_tbl.con-arc   1.0   Nov 28 2007 10:07:00   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Reference data for BKS customer data mapping
+--
+--
+--#########################################################################*/
+
+ALTER TABLE BKS_REFDATA_VALUES
+  ADD CONSTRAINT BKS_RD_VALUES_PK PRIMARY KEY (
+   RDS_ID,
+   SOURCE_VALUE_ID,
+   VALID_FROM,
+   VALID_UNTIL
+  )
+  USING INDEX
+  &&ONL_CCM_SMALL_IDX;

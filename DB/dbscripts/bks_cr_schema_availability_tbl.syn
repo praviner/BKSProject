@@ -1,0 +1,19 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_schema_availability_tbl.syn  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_schema_availability_tbl.syn-arc   1.0   Nov 12 2007 17:45:44   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Table to support a logical disabling of a database schema
+--
+--
+--#########################################################################*/
+
+create public synonym SCHEMA_AVAILABILITY for SCHEMA_AVAILABILITY;
+

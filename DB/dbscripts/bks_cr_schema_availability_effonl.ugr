@@ -1,0 +1,18 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_schema_availability_effonl.ugr  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_schema_availability_effonl.ugr-arc   1.0   Nov 28 2007 10:07:02   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+--
+--
+--#########################################################################*/
+
+grant select on BKS_OWNER.SCHEMA_AVAILABILITY to R_BKS_RO;
+

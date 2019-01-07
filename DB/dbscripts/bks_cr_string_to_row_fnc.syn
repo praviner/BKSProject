@@ -1,0 +1,27 @@
+/*
+--#########################################################################
+--
+-- Script Name          :  $Workfile:   bks_cr_string_to_row_fnc.syn  $ 
+-- Header               :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_string_to_row_fnc.syn-arc   1.0   Feb 28 2008 10:11:48   makuier  $ 
+-- Revision             :  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+--
+-- ONL
+-- BKS_DB
+--
+-- Modification History :  $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_string_to_row_fnc.syn-arc  $
+--
+--   Rev 1.0   Feb 28 2008 10:11:48   makuier
+--Initial revision.
+--
+--   Rev 1.0   Feb 27 2008 09:35:00   makuier
+--Initial revision.
+--
+--
+--#########################################################################*/
+CREATE OR REPLACE PUBLIC SYNONYM string2Row FOR string2Row;

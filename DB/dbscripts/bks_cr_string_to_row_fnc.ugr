@@ -1,0 +1,27 @@
+/*
+--#########################################################################
+--
+-- Script Name          :  $Workfile:   bks_cr_string_to_row_fnc.ugr  $ 
+-- Header               :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_string_to_row_fnc.ugr-arc   1.0   Feb 28 2008 10:11:50   makuier  $ 
+-- Revision             :  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+--
+-- ONL
+-- BKS_DB
+--
+-- Modification History :  $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_string_to_row_fnc.ugr-arc  $
+--
+--   Rev 1.0   Feb 28 2008 10:11:50   makuier
+--Initial revision.
+--
+--   Rev 1.0   Nov 06 2007 09:46:02   huptasch
+--Initial revision.
+--
+--
+--#########################################################################*/
+GRANT EXECUTE ON string2Row TO BKS_USER;

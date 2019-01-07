@@ -1,0 +1,79 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_al_bks_user_tbl.ugr  $ 
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_al_bks_user_tbl.ugr-arc   1.0   Nov 12 2007 17:41:14   huptasch  $ 
+-- Revision		:  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT-19578 "Bestandskundenservice AAW-RD R1.2 Phase 2"
+-- Remove previous individual privileges from BKS_USER.
+-- BKS_USER is now assigned to role R_BKS_RO and inherits all privileges from it.
+--
+--
+--#########################################################################*/
+
+
+revoke select on MAIN_USER.ACCESS_INFORMATION from BKS_USER;
+revoke select on MAIN_USER.ACCESS_NUMBER from BKS_USER;
+revoke select on MAIN_USER.ACCOUNT from BKS_USER;
+revoke select on MAIN_USER.ADDRESS from BKS_USER;
+revoke select on MAIN_USER.AFFINITY_GROUP from BKS_USER;
+revoke select on MAIN_USER.ARCOR_CONTACT_DATA from BKS_USER;
+revoke select on MAIN_USER.ARCOR_CONTACT_RULE from BKS_USER;
+revoke select on MAIN_USER.BANK_ACCOUNT from BKS_USER;
+revoke select on MAIN_USER.BUNDLE from BKS_USER;
+revoke select on MAIN_USER.BUNDLE_ITEM from BKS_USER;
+revoke select on MAIN_USER.BUNDLE_MIGRATION_LOG from BKS_USER;
+revoke select on MAIN_USER.COMMISSIONING_INFORMATION from BKS_USER;
+revoke select on MAIN_USER.CONFIGURED_VALUE from BKS_USER;
+revoke select on MAIN_USER.CONFIG_SERVICE_CHARACTERISTIC from BKS_USER;
+revoke select on MAIN_USER.CONTACT from BKS_USER;
+revoke select on MAIN_USER.CONTACT_ROLE from BKS_USER;
+revoke select on MAIN_USER.CONTRACT_CUSTOMER from BKS_USER;
+revoke select on MAIN_USER.CONTRACT_PREDEFINED_LEGAL from BKS_USER;
+revoke select on MAIN_USER.CONTRIBUTING_ITEM from BKS_USER;
+revoke select on MAIN_USER.CREDIT_CARD from BKS_USER;
+revoke select on MAIN_USER.CROSS_REFERENCE_ITEM from BKS_USER;
+revoke select on MAIN_USER.CSECOMMENT from BKS_USER;
+revoke select on MAIN_USER.CUSTOMER from BKS_USER;
+revoke select on MAIN_USER.CUSTOMER_DECRYPT from BKS_USER;
+revoke select on MAIN_USER.CUSTOMER_ORDER from BKS_USER;
+revoke select on MAIN_USER.CUSTOMER_ORDER_DEPENDENCY from BKS_USER;
+revoke select on MAIN_USER.CUSTOM_LEGAL_CONDITION from BKS_USER;
+revoke select on MAIN_USER.DOCUMENT_PATTERN from BKS_USER;
+revoke select on MAIN_USER.DOCUMENT_RECIPIENT from BKS_USER;
+revoke select on MAIN_USER.ENTITY from BKS_USER;
+revoke select on MAIN_USER.GENERAL_CODE_ITEM from BKS_USER;
+revoke select on MAIN_USER.GUIDING_RULE from BKS_USER;
+revoke select on MAIN_USER.MAILING from BKS_USER;
+revoke select on MAIN_USER.ORDER_FORM from BKS_USER;
+revoke select on MAIN_USER.ORDER_FORM_PRODUCT_COMMIT from BKS_USER;
+revoke select on MAIN_USER.PARAMETER_ITEM from BKS_USER;
+revoke select on MAIN_USER.PASSWORD from BKS_USER;
+revoke select on MAIN_USER.PREDEFINED_LEGAL_CONDITION from BKS_USER;
+revoke select on MAIN_USER.PRICE_PLAN_SUBSCRIPTION from BKS_USER;
+revoke select on MAIN_USER.PRINCIPAL from BKS_USER;
+revoke select on MAIN_USER.PRINCIPAL_ASSOCIATE from BKS_USER;
+revoke select on MAIN_USER.PRODUCT_SERVICE_RULE from BKS_USER;
+revoke select on MAIN_USER.PRODUCT_SUBSCRIPTION from BKS_USER;
+revoke select on MAIN_USER.PRODUCT_SUBSCRIPTION_GROUP from BKS_USER;
+revoke select on MAIN_USER.SAP_DUNNING from BKS_USER;
+revoke select on MAIN_USER.SAP_DUNNING_PROCESSING from BKS_USER;
+revoke select on MAIN_USER.SAP_DUNNING_STATISTIC from BKS_USER;
+revoke select on MAIN_USER.SECURITY_PROFILE from BKS_USER;
+revoke select on MAIN_USER.SELECTED_DESTINATION from BKS_USER;
+revoke select on MAIN_USER.SERVICE_DELIVERY_CONTRACT from BKS_USER;
+revoke select on MAIN_USER.SERVICE_LOCATION from BKS_USER;
+revoke select on MAIN_USER.SERVICE_SUBSCRIPTION from BKS_USER;
+revoke select on MAIN_USER.SERVICE_SUBSCRIPTION_DEP from BKS_USER;
+revoke select on MAIN_USER.SERVICE_TICKET_POSITION from BKS_USER;
+revoke select on MAIN_USER.SERVICE_TICKET_POSITION_DEP from BKS_USER;
+revoke select on MAIN_USER.SERV_DELIV_CONT_PRODUCT_COMMIT from BKS_USER;
+revoke select on MAIN_USER.SERV_SUBSCR_PRICE_PLAN_SUBSCR from BKS_USER;
+revoke select on MAIN_USER.SKELETON_CONTRACT from BKS_USER;
+revoke select on MAIN_USER.SKELETON_CONTRACT_PROD_COMMIT from BKS_USER;
+

@@ -1,0 +1,40 @@
+/*
+--#########################################################################
+--
+-- Script Name  	:  $Workfile:   bks_cr_TAB_CN_RETRIEVE.syn  $
+-- Header		:  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_TAB_CN_RETRIEVE.syn-arc   1.1   Apr 29 2014 14:36:48   makuier  $
+-- Revision		:  $Revision:   1.1  $
+--
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- Create synonym for pkg_fe 
+--
+-- Modification History 	:     $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_TAB_CN_RETRIEVE.syn-arc  $
+--
+--   Rev 1.1   Apr 29 2014 14:36:48   makuier
+--bug fix
+--
+--   Rev 1.0   Apr 25 2014 12:25:02   makuier
+--Initial revision.
+--
+--   Rev 1.2   28 Mar 2013 18:00:04   heikampm
+--include ccm_cr_db_link_zar.sql
+--
+--   Rev 1.1   14 Mar 2013 14:54:58   heikampm
+--corrections
+--
+--   Rev 1.0   13 Feb 2013 17:37:44   heikampm
+--Initial revision.
+--
+--
+--
+--#########################################################################*/
+
+@bks_cr_db_link_zarConf.sql
+
+create or replace public synonym TAB_CN_RETRIEVE 
+  for ZARADM_2.TAB_CN_RETRIEVE@&&ZAR_DB_LINK_NAME
+  ;
+

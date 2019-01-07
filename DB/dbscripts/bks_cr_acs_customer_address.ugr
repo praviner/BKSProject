@@ -1,0 +1,24 @@
+/*
+--#########################################################################
+--
+-- Script Name          :  $Workfile:   bks_cr_acs_customer_address.ugr  $ 
+-- Header               :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_acs_customer_address.ugr-arc   1.0   May 12 2009 12:36:56   wlazlow  $ 
+-- Revision             :  $Revision:   1.0  $
+-- 
+---------------------------------------------------------------------------
+--
+-- Description:
+--
+-- 
+--
+-- 
+-- Modification History :  $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_acs_customer_address.ugr-arc  $
+--
+--   Rev 1.0   May 12 2009 12:36:56   wlazlow
+--Initial revision.
+--
+--
+--
+--#########################################################################*/
+
+GRANT SELECT ON  ACS_ACCESS.ACS_CUSTOMER_ADDRESS  TO BKS_USER;

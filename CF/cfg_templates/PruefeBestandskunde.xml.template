@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<!--
+#  START HEADER
+#  File:                $Workfile:   PruefeBestandskunde.xml.template  $
+#  Author:              $Author:   makuier  $
+#  Revision:            $Revision:   1.3  $,
+#  Purpose:             Template for PruefeBestandskunde.xml
+#  Last Change:         $Date:   Aug 21 2009 14:29:48  $
+#  Change history:
+#  $Log:   //PVCS_BKS/archives/BKS/CF/cfg_templates/PruefeBestandskunde.xml.template-arc  $
+#
+#   Rev 1.3   Aug 21 2009 14:29:48   makuier
+#Statement ID added.
+#
+#   Rev 1.2   Jul 18 2008 13:16:24   schwarje
+#SPN-BKS-000072773: changed statement to handle empty organization type
+#
+#   Rev 1.1   Jul 17 2008 13:18:12   schwarje
+#SPN-BKS-000073952: PruefeBestandskunde: disabled eh-cache and enabled iBatis query cache
+#
+#   Rev 1.0   Jul 10 2008 15:49:56   makuier
+#Initial revision.
+#
+#  END HEADER
+-->
+
+<!--
+#START PARAMETER
+#Parameter:         bks.PruefeBestandskunde.QueryTimeout
+#ValidFrom:         BKS-27
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Any positive integer >= 1
+#DefaultValue:      -
+#ExampleValue:      1
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     09.07.08
+#Last_Modified_By   makuier
+#Description:       Query time out in seconds
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.PruefeBestandskunde.CacheFlushInterval
+#ValidFrom:         BKS-27
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Any positive integer >= 1
+#DefaultValue:      -
+#ExampleValue:      10
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     17.07.08
+#Last_Modified_By   makuier
+#Description:       Flush interval for iBatis query cache in minutes
+#END PARAMETER
+
+#START PARAMETER
+#Parameter:         bks.PruefeBestandskunde.CacheSize
+#ValidFrom:         BKS-27
+#ValidTo:           open
+#Components:        BKS
+#ParameterType:     STRING
+#ValidValues:       Any positive integer >= 1
+#DefaultValue:      -
+#ExampleValue:      500
+#RecomnendedVal.:   -
+#Optional:          N
+#Last_Modified:     17.07.08
+#Last_Modified_By   makuier
+#Description:       Size of the iBatis query cache (number of objects in the cache)
+#END PARAMETER
+
+-->
+
+
+
+
+<sqlMap>
+                
+    <cacheModel id="PruefeBestandskunde-cache" type="FIFO" readOnly="true" >
+		<flushInterval minutes="${bks.PruefeBestandskunde.CacheFlushInterval}"/>
+		<property name="size" value="${bks.PruefeBestandskunde.CacheSize}" />		
+    </cacheModel>
+
+    <select id = "effonl.RetrieveAccessNumber" 
+    		parameterClass = "java.util.HashMap" 
+            resultClass="java.util.HashMap" 
+            cacheModel="PruefeBestandskunde-cache">
+        SELECT /*+FIRST_ROWS effonl.RetrieveAccessNumber */ AN.CUSTOMER_NUMBER  
+        FROM ACCESS_NUMBER  AN, CONFIG_SERVICE_CHARACTERISTIC CSC   
+        WHERE TYPE_RD IN ('MAIN_ACCESS_NUM', 'ACC_NUM_RANGE','MOBIL_ACCESS_NUM') AND 
+        ((AN.START_RANGE_STRING > #shortnumber# AND AN.START_RANGE_STRING &lt;= #accessnumber# 
+        AND CONCAT( AN.END_RANGE_STRING,SUBSTR(AN.ACCESS_NUMBER,INSTR(AN.ACCESS_NUMBER,';',-1,1)+1))> #accessnumber# ) 
+        OR AN.START_RANGE_STRING LIKE #accessnumber#||'%' ) 
+        AND AN.CONFIG_SERVICE_CHAR_ID = CSC.CONFIG_SERVICE_CHAR_ID 
+        AND CSC.EFFECTIVE_STATUS = 'ACTIVE' 
+        AND ROWNUM &lt; 12 
+        AND CSC.EFFECTIVE_FLAG = 'N'
+    </select>
+
+    <select id = "effonl.RetrieveAddressNameCustomer" 
+    		parameterClass = "java.util.HashMap" 
+    		resultClass="java.util.HashMap" 
+    		timeout="${bks.PruefeBestandskunde.QueryTimeout}"
+    		cacheModel="PruefeBestandskunde-cache">
+        SELECT /* effonl.RetrieveAddressNameCustomer */ DISTINCT CUSTOMER_NUMBER, ENTITY_TYPE  
+        FROM ADDRESS A, ENTITY E   
+        WHERE A.EFFECTIVE_FLAG = 'N'  
+        AND A.EFFECTIVE_STATUS = 'ACTIVE'  
+        AND A.ENTITY_ID = E.ENTITY_ID  
+        AND E.CUSTOMER_NUMBER IS NOT NULL 
+        AND E.TERMINATION_DATE = TO_DATE('01.01.1901 01:00:01', 'DD.MM.YYYY HH24:MI:SS') 
+        AND A.ADDRESS_TYPE_RD IN ('KUND','STD','LOKA')  
+        AND A.POSTAL_CODE = #postalCode#  
+        AND UPPER(A.STREET_NAME) = #street#  
+        AND A.STREET_NUMBER = #streetNum#  
+        AND (A.STREET_NUMBER_SUFFIX = #numberSuffix# OR   STREET_NUMBER_SUFFIX IS NULL)   
+        AND (E.ORGANIZATION_TYPE_RD = #rechtForm#   OR E.ORGANIZATION_TYPE_RD = 'BLANK')  
+        AND E.NLSUPPER_NAME LIKE UPPER(#firmname#)
+    </select>
+                
+    <select id = "effonl.RetrieveAddressCustomer" 
+    		parameterClass = "java.util.HashMap" 
+    		resultClass="java.util.HashMap"
+    		cacheModel="PruefeBestandskunde-cache">
+        SELECT /* effonl.RetrieveAddressCustomer" */ DISTINCT CUSTOMER_NUMBER, ENTITY_TYPE  
+        FROM ADDRESS A, ENTITY E   
+        WHERE A.EFFECTIVE_FLAG = 'N'  
+        AND A.EFFECTIVE_STATUS = 'ACTIVE'  
+        AND A.ENTITY_ID = E.ENTITY_ID  
+        AND E.CUSTOMER_NUMBER IS NOT NULL 
+        AND E.TERMINATION_DATE = TO_DATE('01.01.1901 01:00:01', 'DD.MM.YYYY HH24:MI:SS') 
+        AND A.ADDRESS_TYPE_RD IN ('KUND','STD','LOKA')  
+        AND A.POSTAL_CODE = #postalCode#   
+        AND UPPER(A.STREET_NAME) = #street# 
+        AND A.STREET_NUMBER = #streetNum# 
+        AND (A.STREET_NUMBER_SUFFIX = #numberSuffix# OR   STREET_NUMBER_SUFFIX IS NULL) 
+        AND E.CUSTOMER_NUMBER IN (select * from THE (select (string2Row(#custNumList#)) as string_To_Row_Type from dual ))
+    </select>
+                
+    <select id = "effonl.RetrieveNameCustomer" 
+    		parameterClass = "java.util.HashMap" 
+    		resultClass="java.util.HashMap"
+    		cacheModel="PruefeBestandskunde-cache">
+		SELECT /*+ leading(func) use_nl(e) effonl.RetrieveNameCustomer */
+		DISTINCT 
+		CUSTOMER_NUMBER , ENTITY_TYPE  
+		FROM 
+		  (select * from THE (select (string2Row(#custNumList#)) as string_To_Row_Type from dual))  func,
+		  ENTITY E
+		WHERE E.NLSUPPER_NAME LIKE UPPER(#firmname#) 
+		AND E.TERMINATION_DATE = TO_DATE('01.01.1901 01:00:01', 'DD.MM.YYYY HH24:MI:SS') 
+		AND (E.ORGANIZATION_TYPE_RD = #rechtForm#   OR E.ORGANIZATION_TYPE_RD = 'BLANK') 
+		AND E.CUSTOMER_NUMBER = func.column_value
+    </select>
+                
+    <select id = "onl.RetrieveAccessNumber" 
+    		parameterClass = "java.util.HashMap" 
+    		resultClass="java.util.HashMap"
+    		cacheModel="PruefeBestandskunde-cache">
+        SELECT /*+FIRST_ROWS onl.RetrieveAccessNumber */ AN.CUSTOMER_NUMBER  
+        FROM ACCESS_NUMBER  AN, CONFIG_SERVICE_CHARACTERISTIC CSC   
+        WHERE TYPE_RD IN ('MAIN_ACCESS_NUM', 'ACC_NUM_RANGE','MOBIL_ACCESS_NUM') AND 
+        ((AN.START_RANGE_STRING > #shortnumber# AND AN.START_RANGE_STRING &lt;= #accessnumber# 
+        AND CONCAT( AN.END_RANGE_STRING,SUBSTR(AN.ACCESS_NUMBER,INSTR(AN.ACCESS_NUMBER,';',-1,1)+1))> #accessnumber# ) 
+        OR AN.START_RANGE_STRING LIKE #accessnumber#||'%' ) 
+        AND AN.CONFIG_SERVICE_CHAR_ID = CSC.CONFIG_SERVICE_CHAR_ID 
+        AND CSC.EFFECTIVE_STATUS = 'ACTIVE' 
+        AND ROWNUM &lt; 12 
+        AND CSC.EFFECTIVE_DATE = ( SELECT MAX(EFFECTIVE_DATE) FROM CONFIG_SERVICE_CHARACTERISTIC CSC1 
+                WHERE CSC.CONFIG_SERVICE_CHAR_ID = CSC1.CONFIG_SERVICE_CHAR_ID 
+                AND CSC1.EFFECTIVE_DATE &lt;= SYSDATE )
+    </select>
+                
+    <select id = "onl.RetrieveAddressNameCustomer" 
+    		parameterClass = "java.util.HashMap" 
+    		resultClass="java.util.HashMap" 
+    		timeout="${bks.PruefeBestandskunde.QueryTimeout}"
+    		cacheModel="PruefeBestandskunde-cache">
+        SELECT /* onl.RetrieveAddressNameCustomer */ DISTINCT CUSTOMER_NUMBER, ENTITY_TYPE  
+        FROM ADDRESS A, ENTITY E   
+        WHERE A.EFFECTIVE_STATUS = 'ACTIVE'  
+        AND A.ENTITY_ID = E.ENTITY_ID  
+        AND E.CUSTOMER_NUMBER IS NOT NULL 
+        AND E.TERMINATION_DATE = TO_DATE('01.01.1901 01:00:01', 'DD.MM.YYYY HH24:MI:SS') 
+        AND A.ADDRESS_TYPE_RD IN ('KUND','STD','LOKA')  
+        AND A.POSTAL_CODE = #postalCode#  
+        AND UPPER(A.STREET_NAME) = #street#  
+        AND A.STREET_NUMBER = #streetNum#  
+        AND (A.STREET_NUMBER_SUFFIX = #numberSuffix# OR   STREET_NUMBER_SUFFIX IS NULL)   
+        AND (E.ORGANIZATION_TYPE_RD = #rechtForm#   OR E.ORGANIZATION_TYPE_RD = 'BLANK')  
+        AND E.NLSUPPER_NAME LIKE UPPER(#firmname#)
+        AND A.EFFECTIVE_DATE = ( SELECT MAX(EFFECTIVE_DATE) FROM ADDRESS A1 
+                WHERE A.ADDRESS_ID = A1.ADDRESS_ID 
+                AND A1.EFFECTIVE_DATE &lt;= SYSDATE )
+    </select>
+                
+    <select id = "onl.RetrieveAddressCustomer" 
+    		parameterClass = "java.util.HashMap" 
+    		resultClass="java.util.HashMap"
+    		cacheModel="PruefeBestandskunde-cache">
+        SELECT /* onl.RetrieveAddressCustomer */ DISTINCT CUSTOMER_NUMBER, ENTITY_TYPE  
+        FROM ADDRESS A, ENTITY E   
+        WHERE A.EFFECTIVE_STATUS = 'ACTIVE'  
+        AND A.ENTITY_ID = E.ENTITY_ID  
+        AND E.CUSTOMER_NUMBER IS NOT NULL 
+        AND E.TERMINATION_DATE = TO_DATE('01.01.1901 01:00:01', 'DD.MM.YYYY HH24:MI:SS') 
+        AND A.ADDRESS_TYPE_RD IN ('KUND','STD','LOKA')  
+        AND A.POSTAL_CODE = #postalCode#   
+        AND UPPER(A.STREET_NAME) = #street# 
+        AND A.STREET_NUMBER = #streetNum# 
+        AND (A.STREET_NUMBER_SUFFIX = #numberSuffix# OR   STREET_NUMBER_SUFFIX IS NULL) 
+        AND E.CUSTOMER_NUMBER IN (select * from THE (select (string2Row(#custNumList#)) as string_To_Row_Type from dual ))
+        AND A.EFFECTIVE_DATE = ( SELECT MAX(EFFECTIVE_DATE) FROM ADDRESS A1 
+                WHERE A.ADDRESS_ID = A1.ADDRESS_ID 
+                AND A1.EFFECTIVE_DATE &lt;= SYSDATE )
+    </select>
+                
+    <select id = "onl.RetrieveNameCustomer" 
+    		parameterClass = "java.util.HashMap" 
+    		resultClass="java.util.HashMap"
+    		cacheModel="PruefeBestandskunde-cache">
+		SELECT /*+ leading(func) use_nl(e) onl.RetrieveNameCustomer */
+		DISTINCT 
+		CUSTOMER_NUMBER , ENTITY_TYPE  
+		FROM 
+		  (select * from THE (select (string2Row(#custNumList#)) as string_To_Row_Type from dual))  func,
+		  ENTITY E
+		WHERE E.NLSUPPER_NAME LIKE UPPER(#firmname#) 
+		AND E.TERMINATION_DATE = TO_DATE('01.01.1901 01:00:01', 'DD.MM.YYYY HH24:MI:SS') 
+		AND (E.ORGANIZATION_TYPE_RD = #rechtForm#   OR E.ORGANIZATION_TYPE_RD = 'BLANK') 
+		AND E.CUSTOMER_NUMBER = func.column_value
+    </select>
+                
+</sqlMap>

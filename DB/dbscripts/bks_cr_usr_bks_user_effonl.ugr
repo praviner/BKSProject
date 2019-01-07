@@ -1,0 +1,30 @@
+/*
+-- #######################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_usr_bks_user_effonl.ugr  $ 
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_usr_bks_user_effonl.ugr-arc   1.1   05 Sep 2007 12:20:34   dortmann  $ 
+-- Revision     :  $Revision:   1.1  $
+-- 
+-- -----------------------------------------------------------------------
+--
+-- Description:
+--
+-- IT18232 - D2 service providing
+--     
+-- History      :  $Log:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_usr_bks_user_effonl.ugr-arc  $
+--
+--   Rev 1.1   05 Sep 2007 12:20:34   dortmann
+--Fix PVCS Header
+--
+--
+-- #######################################################################
+*/
+@ConfigEnvSpecifics.sql
+
+CREATE USER BKS_USER
+IDENTIFIED BY BKS_USER
+DEFAULT &&EFFONL_BKS_DEFAULT_TABLESPACE
+TEMPORARY  &&EFFONL_BKS_TEMP_TABLESPACE;
+
+GRANT CREATE SESSION, ALTER SESSION TO BKS_USER;
+/

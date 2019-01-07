@@ -1,0 +1,21 @@
+/*
+--#########################################################################
+--
+-- Script Name  :  $Workfile:   bks_cr_transaction_log_tbl.ugr  $ 
+-- Header       :  $Header:   //PVCS_BKS/archives/BKS/DB/dbscripts/bks_cr_transaction_log_tbl.ugr-arc   1.2   Dec 09 2011 14:10:12   makuier  $ 
+-- Revision     :  $Revision:   1.2  $
+-- 
+-- -----------------------------------------------------------------------
+--
+-- Description:
+--
+--
+--
+--#########################################################################*/
+
+GRANT SELECT, UPDATE, INSERT, DELETE ON BKS_TRANSACTION_LOG TO BKS_USER;
+GRANT SELECT, UPDATE, INSERT, DELETE ON BKS_TRANSACTION_LOG TO FIF_SLS_USER;
+grant select on BKS_TRANSACTION_LOG to R_BKS_RO;
+grant select on BKS_TRANSACTION_LOG to R_MAIN_RO;
+grant select on BKS_TRANSACTION_LOG to R_MAIN_UDI;
+grant select on BKS_TRANSACTION_LOG to R_CODB_RO;
