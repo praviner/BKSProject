@@ -57,9 +57,11 @@ Initial revision.
 		ANT build file for the BKS project
 	</description>
 
+<!-- commented by Pravin
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties" />
 	<taskdef resource="net/sf/antcontrib/antlib.xml" />
 
+-->
 	<!--******************
 		*** PROPERTIES ***
 		******************-->
