@@ -76,9 +76,12 @@
 			    <exclude name="**/epsm_ccm_consolidatesubscriptiondata_001/*"/>
 			</fileset>
 		</delete>
-		<javac srcdir="${generatedsrc}" destdir="${bin}" debug="on">
+		
+		
+		<javac encoding="Cp1252" srcdir="${generatedsrc}" destdir="${bin}" debug="on">
 			<classpath refid="classpath" />
 		</javac>
+		
 	</target>
 	
 	
