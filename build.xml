@@ -87,7 +87,7 @@
 	
 	<!-- Compile the java code from ${src} into ${bin} -->
 	<target name="compile" depends="init" description="Compiles all source files" >
-		<javac srcdir="${src}" destdir="${bin}" debug="true">
+		<javac encoding="Cp1252" srcdir="${src}" destdir="${bin}" debug="true">
 			<classpath>
 				<fileset dir="${lib}">
 					<include name="**/*.jar"/>
