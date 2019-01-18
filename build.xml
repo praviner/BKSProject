@@ -26,12 +26,15 @@
 		<mkdir dir="${generatedsrc}"/>
 	</target>
 
+
 	<!-- PVCS example task -->
 	<!-- see: http://ant.apache.org/manual/OptionalTasks/pvcstask.html for more info -->
+<!--
 	<target name="pvcsget">
 	    <pvcs repository="F:\GRUPPEN\PROJEKTE\PVCS_BKS" pvcsproject="/BKS"/>
 	</target>
 
+-->
 	<!-- generate and compile the code for the service bus -->
 
 	<path id="classpath">
